@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+// HEADER.JSX
+.head {
+  background-color: #c6a865;
+  .custom-dropdown-menu {
+    min-width: 70px !important;
+  }
+
+  img {
+    width: 20px;
+    height: 25px;
+  }
+}
+// NAVBAR.JSX
+.navbar {
+  img {
+    width: 215px;
+  }
+  .dropdown-menu {
+    min-width: 70px !important;
+  }
+  button {
+    border: none;
+    background-color: white;
+  }
+  .icon {
+    font-size: 20px;
+  }
+  .badge {
+    font-size: 12px;
+    background-color: #c6a865;
+  }
+  .page{
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+  }
+}

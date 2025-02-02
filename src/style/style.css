@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.head {
+  background-color: #c6a865;
+}
+.head .custom-dropdown-menu {
+  min-width: 70px !important;
+}
+.head img {
+  width: 20px;
+  height: 25px;
+}
+
+.navbar img {
+  width: 215px;
+}
+.navbar .dropdown-menu {
+  min-width: 70px !important;
+}
+.navbar button {
+  border: none;
+  background-color: white;
+}
+.navbar .icon {
+  font-size: 20px;
+}
+.navbar .badge {
+  font-size: 12px;
+  background-color: #c6a865;
+}
+.navbar .page {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+}/*# sourceMappingURL=style.css.map */
