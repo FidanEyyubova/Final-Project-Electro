@@ -39,5 +39,9 @@
     text-decoration: none;
     color: black;
     font-weight: 500;
+    transition: color 0.4s ease;
+  }
+  .page:hover{
+    color: #c6a865;
   }
 }

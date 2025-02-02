@@ -29,7 +29,6 @@ const Navbar = () => {
           <div
             className="navbar-collapse collapse"
             id="navbarsExample05"
-            style={{}}
           >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 gap-4">
               <Link className="page mt-2">HOME</Link>
