@@ -30,6 +30,11 @@
   }
   .icon {
     font-size: 20px;
+    transition: color 0.4s ease;
+  }
+  .icon:hover {
+    font-size: 20px;
+    color: #c6a865;
   }
   .badge {
     font-size: 12px;
@@ -43,5 +48,30 @@
   }
   .page:hover{
     color: #c6a865;
+  }
+}
+//FOOTER.JSX
+.footer{
+  background-color: #c6a865;
+  color: white;
+  p{
+    font-size: 18px;
+  }
+  .menu{
+    text-decoration: none;
+    color: white;
+    font-size: 17px;
+    transition: color 0.4s ease;
+  }
+  .menu:hover{
+    color: black;
+  }
+  .icon{
+    color: white;
+    font-size: 18px;
+    transition: color 0.4s ease;
+  }
+  .icon:hover{
+    color: black;
   }
 }
