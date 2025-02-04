@@ -13,7 +13,7 @@ const Footer = () => {
         <div className="row mx-3 border-bottom py-3">
           <div className="col-lg-3 col-md-12 col-12 my-3">
             <div>
-                <p><b>Moduluxe</b> furniture offers <br /> modern, stylish, and <br /> customizable furniture <br /> for every space.</p>
+                <p><b>Modeluxe</b> furniture offers <br /> modern, stylish, and <br /> customizable furniture <br /> for every space.</p>
             </div>
           </div>
           <div className="col-lg-3 col-md-12 col-12 ">
