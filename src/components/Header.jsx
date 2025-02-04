@@ -22,7 +22,7 @@ const Header = () => {
                 <img src="https://freesvg.org/img/UK-union-flag.png" alt="" />
                 <small className="mx-1">ENG</small>
               </button>
-              <ul className="dropdown-menu  custom-dropdown-menu text-center">
+              <ul className="dropdown-menu  dropdown-menu-end custom-dropdown-menu text-center">
                 <li>
                   <a className="dropdown-item" href="#">
                     <img

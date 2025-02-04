@@ -6,9 +6,9 @@ import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div>
+    <div className="sticky-top">
       <nav
-        className="navbar navbar-expand-lg "
+        className="navbar scrolled navbar-expand-lg"
         aria-label="Fifth navbar example"
       >
         <div className="container-fluid">
