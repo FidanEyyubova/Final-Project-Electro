@@ -49,6 +49,12 @@
   .page:hover{
     color: #c6a865;
   }
+  .active {
+    color: #c6a865;
+    text-decoration: none;
+    font-weight: 500;
+  }
+ 
 }
 //FOOTER.JSX
 .footer{
@@ -62,6 +68,7 @@
     color: white;
     font-size: 17px;
     transition: color 0.4s ease;
+    font-weight: bold;
   }
   .menu:hover{
     color: black;
@@ -73,5 +80,32 @@
   }
   .icon:hover{
     color: black;
+  }
+}
+//ABOUT.JSX
+.about{
+  .container-fluid{
+    .header {
+      background-image:url("https://birchwoodfurniture.ca/wp-content/uploads/2023/07/Modern-Living-Room-Furniture-Ideas-Hero-scaled.jpg");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      color: white;
+      position: relative;
+  }
+    .header::before{
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.205);
+      border-radius: 7px;
+    }
+    p{
+      font-weight: bold;
+      position: relative;
+      z-index: 2;
+    }
   }
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { BsSearch } from "react-icons/bs";
 import { FaRegHeart, FaRegUser } from "react-icons/fa6";
 import { FiShoppingCart } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -26,12 +26,9 @@ const Navbar = () => {
           >
             <span className="navbar-toggler-icon" />
           </button>
-          <div
-            className="navbar-collapse collapse"
-            id="navbarsExample05"
-          >
+          <div className="navbar-collapse collapse" id="navbarsExample05">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 gap-4">
-              <Link className="page mt-2">HOME</Link>
+              <Link className="page mt-2 ">HOME</Link>
               <Link className="page mt-2">SHOP</Link>
               <Link className="page mt-2">PRODUCT</Link>
               <Link className="page mt-2">BLOG</Link>
@@ -46,8 +43,16 @@ const Navbar = () => {
                 </a>
                 <ul className="dropdown-menu text-center">
                   <li className="nav-item">
-                    <Link className="page">ABOUT</Link>
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive ? "active" : "page"
+                      }
+                      to="/about"
+                    >
+                      ABOUT
+                    </NavLink>
                   </li>
+
                   <li className="nav-item">
                     <Link className="page">FAQ</Link>
                   </li>
