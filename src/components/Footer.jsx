@@ -1,7 +1,7 @@
-import React from 'react'
-import { FaFacebookF, FaInstagram } from 'react-icons/fa6'
-import { RiTwitterXFill } from 'react-icons/ri'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { FaFacebookF, FaInstagram } from "react-icons/fa6";
+import { RiTwitterXFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -13,47 +13,40 @@ const Footer = () => {
         <div className="row mx-3 border-bottom py-3">
           <div className="col-lg-3 col-md-12 col-12 my-3">
             <div>
-                <p><b>Modeluxe</b> furniture offers <br /> modern, stylish, and <br /> customizable furniture <br /> for every space.</p>
+              <p>
+                <b>Modeluxe</b> furniture offers <br /> modern, stylish, and{" "}
+                <br /> customizable furniture <br /> for every space.
+              </p>
             </div>
           </div>
           <div className="col-lg-3 col-md-12 col-12 ">
             <div>
               <ul className="nav flex-column">
                 <li className="nav-item mb-2 my-3">
-                <Link className="menu">
-                Home
-                </Link>
+                  <Link className="menu">Home</Link>
                 </li>
                 <li className="nav-item mb-2 my-3">
-                <Link className="menu">
-                Shop
-                </Link>
+                  <Link className="menu">Shop</Link>
                 </li>
                 <li className="nav-item mb-2 my-3">
-                <Link className="menu">
-                Product
-                </Link>
+                  <Link className="menu">Product</Link>
                 </li>
               </ul>
             </div>
           </div>
           <div className="col-lg-3 col-md-12 col-12">
-          <div>
+            <div>
               <ul className="nav flex-column">
                 <li className="nav-item mb-2 my-3">
-                <Link className="menu">
-                Blog
-                </Link>
+                  <Link className="menu">Blog</Link>
                 </li>
                 <li className="nav-item mb-2 my-3">
-                <Link className="menu">
-                Contact
-                </Link>
+                  <Link className="menu">Contact</Link>
                 </li>
                 <li className="nav-item mb-2 my-3">
-                <Link className="menu">
-                About
-                </Link>
+                  <Link className="menu" to="/about">
+                    About
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -68,7 +61,10 @@ const Footer = () => {
                 <a href="https://www.instagram.com/" className="icon">
                   <FaInstagram />
                 </a>
-                <a href="https://www.facebook.com/?locale=ru_RU" className="icon">
+                <a
+                  href="https://www.facebook.com/?locale=ru_RU"
+                  className="icon"
+                >
                   <FaFacebookF />
                 </a>
               </div>
@@ -82,7 +78,7 @@ const Footer = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

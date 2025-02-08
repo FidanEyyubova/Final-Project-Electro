@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaRegCheckCircle } from "react-icons/fa";
+import Aos from "aos";
+import "aos/dist/aos.css";
+
+ 
 
 const About = () => {
+    useEffect(() => {
+        Aos.init({ duration: 2000 });
+      }, []);
   return (
     <div className="about py-5">
       <div className="container-fluid">
@@ -12,7 +19,7 @@ const About = () => {
             </h1>
           </div>
         </div>
-        <div className="row py-3 middle">
+        <div className="row py-3 middle" data-aos="fade-down">
           <div className="col-12">
             <h3 className=" py-2 my-3">Moduluxe Furniture</h3>
             <p>
@@ -50,33 +57,48 @@ const About = () => {
             </div>
           </div>
         </div>
-        <div className="row end text-center">
+        <div className="row end text-center ">
           <h2 className="team text-center my-5 py-3">Our Team</h2>
-          <div className="col-lg-4 col-12 my-2">
+          <div className="col-lg-4 col-12 my-2"   data-aos="fade-down">
             <div>
-                <img src="https://img.freepik.com/premium-photo/well-dressed-young-businessman-portrait_1024356-1568.jpg" alt="" />
+              <img
+                src="https://img.freepik.com/premium-photo/well-dressed-young-businessman-portrait_1024356-1568.jpg"
+                alt=""
+              />
             </div>
             <div className="my-3">
-                <h4>James Holloway</h4>
-                <p><i>CEO</i></p>
+              <h4>James Holloway</h4>
+              <p>
+                <i>CEO</i>
+              </p>
             </div>
           </div>
-          <div className="col-lg-4 col-12 my-2">
+          <div className="col-lg-4 col-12 my-2"   data-aos="fade-down">
             <div>
-                <img src="https://img.freepik.com/premium-photo/woman-business-suit-gray-background_1106493-225464.jpg" alt="" />
+              <img
+                src="https://img.freepik.com/premium-photo/woman-business-suit-gray-background_1106493-225464.jpg"
+                alt=""
+              />
             </div>
             <div className="my-3">
-                <h4>Isabella Thornton</h4>
-                <p><i>Marketing</i></p>
+              <h4>Isabella Thornton</h4>
+              <p>
+                <i>Marketing</i>
+              </p>
             </div>
           </div>
-          <div className="col-lg-4 col-12 my-2">
+          <div className="col-lg-4 col-12 my-2"   data-aos="fade-down">
             <div>
-                <img src="https://img.freepik.com/premium-photo/well-dressed-businessman-with-cross-arm-portrait_1024356-1497.jpg" alt="" />
+              <img
+                src="https://img.freepik.com/premium-photo/well-dressed-businessman-with-cross-arm-portrait_1024356-1497.jpg"
+                alt=""
+              />
             </div>
             <div className="my-3">
-                <h4>Lucas Montgomery</h4>
-                <p><i>Customer Support</i></p>
+              <h4>Lucas Montgomery</h4>
+              <p>
+                <i>Customer Support</i>
+              </p>
             </div>
           </div>
         </div>
