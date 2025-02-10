@@ -6,7 +6,7 @@
 }
 // HEADER.JSX
 .head {
-  background-color: #c6a865;
+  background-color: #4B5945;
   .custom-dropdown-menu {
     min-width: 70px !important;
     z-index: 1050 !important;
@@ -21,7 +21,7 @@
 // NAVBAR.JSX
 .navbar {
   background-color: rgb(255, 255, 255);
-  border-bottom: 1px solid #c6a865;
+  border-bottom: 1px solid #4B5945;
   img {
     width: 215px;
   }
@@ -38,11 +38,11 @@
   }
   .icon:hover {
     font-size: 20px;
-    color: #c6a865;
+    color: #4B5945;
   }
   .badge {
     font-size: 12px;
-    background-color: #c6a865;
+    background-color: #6e906c;
   }
   .page{
     text-decoration: none;
@@ -51,10 +51,10 @@
     transition: color 0.4s ease;
   }
   .page:hover{
-    color: #c6a865;
+    color: #4B5945;
   }
   .active {
-    color: #c6a865;
+    color: #6e906c;
     text-decoration: none;
     font-weight: 500;
   }
@@ -63,7 +63,7 @@
 
 //FOOTER.JSX
 .footer{
-  background-color: #c6a865;
+  background-color: #4B5945;
   color: white;
   p{
     font-size: 18px;
@@ -120,7 +120,7 @@
     h3{
       border-radius: 10px;
       color: black;
-      color: #c6a865;
+      color: #6e906c;
     }
     p{
       font-size: 20px;
@@ -130,12 +130,12 @@
       font-size: 20px;
     }
     .icon{
-      color: #c6a865;
+      color: #6e906c;
     }
   }
   .end{
     h2{
-      background-color: #c6a865;
+      background-color: #4B5945;
       color: white;
     }
     img{
@@ -143,7 +143,7 @@
       border-radius: 15px;
     }
     p{
-      color: #c6a865;
+      color: #4B5945;
     }
   }
 }
@@ -197,7 +197,7 @@
       }
       .accordion-button:not(.collapsed){
         color: black;
-        border-bottom: 2px solid #c6a865;
+        border-bottom: 2px solid #4B5945;
       }
       .accordion-button::after{
         background-image: none;
@@ -205,8 +205,9 @@
         font-family: fontawesome;
         width: auto;
         height: auto;
-        background-color: #c6a865;
+        background-color: #6e906c;
         padding: 8px 10px;
+        color: white;
         border-radius: 50%;
         
       }
@@ -218,7 +219,7 @@
 //HOME.JSX
 .home{
   .icon{
-    color: #c6a865;
+    color: #4B5945;
   }
   .first{
     p{
@@ -246,7 +247,7 @@
     width: 200px;
     font-size: 34px;
     h4{
-      color: #c6a865;
+      color: #6e906c;
     }
     .next{
       font-size: 20px;
