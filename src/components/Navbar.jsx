@@ -13,7 +13,7 @@ const Navbar = () => {
       >
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
-            <img src="../src/images/modeluxe.png" alt="" />
+            <img src="../src/images/logo-modo.png" alt="" />
           </a>
           <button
             className="navbar-toggler collapsed"
