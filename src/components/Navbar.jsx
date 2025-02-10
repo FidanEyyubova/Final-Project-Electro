@@ -28,7 +28,11 @@ const Navbar = () => {
           </button>
           <div className="navbar-collapse collapse" id="navbarsExample05">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 gap-4">
-              <Link className="page mt-2 ">HOME</Link>
+              <NavLink className={({isActive}) => 
+              isActive ? "active mt-2" : "page mt-2"
+              } to={"/"}>
+                HOME
+              </NavLink>
               <Link className="page mt-2">SHOP</Link>
               <Link className="page mt-2">PRODUCT</Link>
               <Link className="page mt-2">BLOG</Link>
