@@ -4,6 +4,7 @@ import { LuSofa } from "react-icons/lu";
 import { MdOutlineArrowForwardIos, MdOutlineTableBar } from "react-icons/md";
 import { PiChair, PiDresser, PiDresserLight } from "react-icons/pi";
 import { Link } from "react-router-dom";
+import TopPicks from "./TopPicks";
 
 const Home = () => {
   return (
@@ -139,6 +140,9 @@ const Home = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="row g-0">
+          <TopPicks />
         </div>
       </div>
     </div>
