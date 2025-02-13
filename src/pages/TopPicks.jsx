@@ -38,7 +38,7 @@ const TopPicks = () => {
         <div className="row mx-3">
 
           {product.slice(0, 8).map((el) => (
-            <div key={el.id} className="col-lg-3 col-md-4 col-6">
+            <div key={el.id} className="col-lg-3 col-md-4 col-6 ">
               <div className="image  text-center">
                 {Object.keys(el.checkImg).map((color) =>
                   el.checkImg[color] ? (

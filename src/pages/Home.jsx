@@ -1,10 +1,13 @@
 import React from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { LuSofa } from "react-icons/lu";
-import { MdOutlineArrowForwardIos, MdOutlineTableBar } from "react-icons/md";
+import { MdOutlineArrowForwardIos, MdOutlineTableBar, MdPayment } from "react-icons/md";
 import { PiChair, PiDresser, PiDresserLight } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import TopPicks from "./TopPicks";
+import { IoMdTime } from "react-icons/io";
+import { CiDeliveryTruck } from "react-icons/ci";
+import { TbTruckDelivery } from "react-icons/tb";
 
 const Home = () => {
   return (
@@ -143,6 +146,41 @@ const Home = () => {
         </div>
         <div className="row g-0">
           <TopPicks />
+        </div>
+        <div className="row g-0 delivery py-5 my-5">
+          <div className="col-lg-4 col-12">
+            <div className="d-flex justify-content-center">
+              <div>
+              <IoMdTime className="mx-3 icon" />
+              </div>
+              <div>
+                <h4>90 Days Return</h4>
+                <p>If goods have problems, consectetur <br /> adipim scing elit</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4 col-12">
+            <div className="d-flex justify-content-center">
+              <div>
+              <TbTruckDelivery className="mx-3 icon" />
+              </div>
+              <div>
+                <h4>Free Delivery</h4>
+                <p>For all oders over $50, consectetur <br /> adipim scing elit</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4 col-12">
+            <div className="d-flex justify-content-center">
+              <div>
+              <MdPayment className="mx-3 icon" />
+              </div>
+              <div>
+                <h4>Secure Payment</h4>
+                <p>100% secure payment, consectetur <br /> adipim scing elit</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
