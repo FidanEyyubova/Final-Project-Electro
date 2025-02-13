@@ -268,4 +268,18 @@
 
 
 
-//t
+//TopPicks
+.top{
+  img{
+    width: 200px;
+  }
+  .view{
+    color: white;
+    text-decoration: none;
+    background-color: black;
+    font-weight: 500;
+  }
+  .view:hover{
+    background-color: #4B5945;
+  }
+}
