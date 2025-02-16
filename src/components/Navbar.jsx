@@ -33,8 +33,7 @@ const Navbar = () => {
               } to={"/"}>
                 HOME
               </NavLink>
-              <Link className="page mt-2">SHOP</Link>
-              <Link className="page mt-2">PRODUCT</Link>
+              <Link className="page mt-2">PRODUCTS</Link>
               <Link className="page mt-2">BLOG</Link>
               <li className="nav-item dropdown-center">
                 <a

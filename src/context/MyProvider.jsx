@@ -9,6 +9,11 @@ const apikey =
 
 const MyProvider = ({ children }) => {
   const [product, setProduct] = useState([]);
+  const [filteredCategory, setFilteredCategory] = useState("All");
+  const [filteredColor, setFilteredColor] = useState("All");
+  const [filteredMaterial, setFilteredMaterial] = useState("All");
+  const [maxPrice, setMaxPrice] = useState(1700);
+  const [rate, setMaxRate] = useState(5);
 
   useEffect(() => {
     axios
@@ -23,7 +28,22 @@ const MyProvider = ({ children }) => {
   }, []);
 
   return (
-    <MyContext.Provider value={{ product, setProduct }}>
+    <MyContext.Provider
+      value={{
+        product,
+        setProduct,
+        filteredCategory,
+        filteredColor,
+        filteredMaterial,
+        maxPrice,
+        rate,
+        setFilteredCategory,
+        setFilteredColor,
+        setFilteredMaterial,
+        setMaxRate,
+        setMaxPrice,
+      }}
+    >
       {children}
     </MyContext.Provider>
   );
