@@ -26,10 +26,10 @@ const Footer = () => {
                   <Link className="menu">Home</Link>
                 </li>
                 <li className="nav-item mb-2 my-3">
-                  <Link className="menu">Shop</Link>
+                  <Link className="menu">FAQ</Link>
                 </li>
                 <li className="nav-item mb-2 my-3">
-                  <Link className="menu">Product</Link>
+                  <Link className="menu">Products</Link>
                 </li>
               </ul>
             </div>

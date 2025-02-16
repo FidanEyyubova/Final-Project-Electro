@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 const TopPicks = () => {
   const { product, setProduct } = useContext(MyContext);
+  
   const handleColor = (id, color) => {
     setProduct((prev) =>
       prev.map((furn) => {
@@ -23,22 +24,22 @@ const TopPicks = () => {
   };
 
   return (
-    <div className="top">
+    <div className="top py-5">
       <div className="container-fluid">
         <div className="row text-center">
-          <div className="col-12">
+          <div className="col-12 py-3">
             <h1>Top Picks</h1>
-            <p>
+            <p className="py-2">
               Find a bright ideal to suit your taste with our great selection of
               suspension, floor and table lights.
             </p>
           </div>
         </div>
         <div></div>
-        <div className="row mx-3">
+        <div className="row mx-3 py-5">
 
           {product.slice(0, 8).map((el) => (
-            <div key={el.id} className="col-lg-3 col-md-4 col-6 ">
+            <div key={el.id} className="col-lg-3 col-md-4 col-sm-6 col-12 product">
               <div className="image  text-center">
                 {Object.keys(el.checkImg).map((color) =>
                   el.checkImg[color] ? (
@@ -46,7 +47,7 @@ const TopPicks = () => {
                   ) : null
                 )}
               </div>
-              <div>
+              <div className="d-flex flex-column justify-content-center align-items-center py-2">
                 <div>
                     <p>{el.title}</p>
                 </div>
@@ -67,14 +68,14 @@ const TopPicks = () => {
                 ))}
               </div>
               <div>
-                    <p>${el.price}</p>
+                    <p><b>${el.price}</b></p>
                 </div>
               </div>
             </div>
           ))}
         </div>
-        <div className="text-center py-5">
-        <Link className="view px-5 py-3">View More</Link>
+        <div className="text-center py-2">
+        <Link className="view px-5 py-3" to={"/products"}>View More</Link>
         </div>
       </div>
     </div>
