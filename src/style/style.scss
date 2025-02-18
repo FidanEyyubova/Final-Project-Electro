@@ -419,3 +419,19 @@ background: linear-gradient(90deg, rgba(59,17,198,1) 0%, rgba(131,47,191,1) 51%,
         }
       }
     }
+
+    .motion{
+      background: rgb(59,17,198);
+background: linear-gradient(90deg, rgba(59,17,198,1) 0%, rgba(131,47,191,1) 51%, rgba(181,77,131,1) 100%);
+font-size: 18px;
+color: white;
+font-weight: 500;
+    }
+
+
+
+    .sticky-top {
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      background: white; /* Ensures the navbar background is visible */
+      z-index: 1020; /* Keeps it above other elements */
+    }
