@@ -14,8 +14,9 @@ const Footer = () => {
           <div className="col-lg-3 col-md-12 col-12 my-3">
             <div>
               <p>
-                <b>Modeluxe</b> furniture offers <br /> modern, stylish, and{" "}
-                <br /> customizable furniture <br /> for every space.
+                <b>Electro</b> is an innovative website <br /> for electronics,
+                offering a <br /> one-stop platform for <br /> shopping and
+                industry <br /> updates.
               </p>
             </div>
           </div>
