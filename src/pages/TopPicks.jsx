@@ -1,81 +1,65 @@
 import React, { useContext } from "react";
 import { MyContext } from "../context/MyProvider";
 import { Link } from "react-router-dom";
+import { CiHeart, CiShoppingBasket } from "react-icons/ci";
+import { FaStar } from "react-icons/fa6";
 
 const TopPicks = () => {
-  const { product, setProduct } = useContext(MyContext);
-  
-  const handleColor = (id, color) => {
-    setProduct((prev) =>
-      prev.map((furn) => {
-        if (furn.id === id) {
-          const newCheckImg = Object.keys(furn.checkImg).reduce((acc, key) => {
-            acc[key] = false;
-            return acc;
-          }, {});
-
-          newCheckImg[color] = true;
-
-          return { ...furn, checkImg: newCheckImg };
-        }
-        return furn;
-      })
-    );
-  };
+  const { product } = useContext(MyContext);
 
   return (
     <div className="top py-5">
       <div className="container-fluid">
-        <div className="row text-center">
-          <div className="col-12 py-3">
-            <h1>Top Picks</h1>
-            <p className="py-2">
-              Find a bright ideal to suit your taste with our great selection of
-              suspension, floor and table lights.
-            </p>
+        <div className="row text-start">
+          <div className="col-12">
+            <h1 className="py-3 mx-4">Trending products</h1>
           </div>
         </div>
         <div></div>
-        <div className="row mx-3 py-5">
-
+        <div className="row mx-3 py-4">
           {product.slice(0, 8).map((el) => (
-            <div key={el.id} className="col-lg-3 col-md-4 col-sm-6 col-12 product">
-              <div className="image  text-center">
-                {Object.keys(el.checkImg).map((color) =>
-                  el.checkImg[color] ? (
-                    <img key={color} src={el.linkImg[color]} alt={color} />
-                  ) : null
+            <div
+              key={el.id}
+              className="col-lg-3 col-md-4 col-sm-6 col-12 product"
+            >
+              <div className="cont my-2 d-flex flex-column justify-content-center align-items-center">
+                <div className="image  text-center py-2 pt-5">
+                  <img src={el.img} />
+                  <div className="d-flex justify-content-between align-items-center mx-3">
+                     <Link className="icon px-2 pb-1"><CiHeart /></Link>
+                     <Link className="icon px-2 pb-1"><CiShoppingBasket /></Link>
+                  </div>
+                </div>
+                <div className="d-flex flex-column justify-content-center align-items-center py-2">
+                  <div className="py-2">
+                    <h5>
+                      <b>{el.name}</b>
+                    </h5>
+                  </div>
+                  <div className="d-flex gap-2">
+                    {el.prevprice !== null && el.prevprice !== "" && (
+                      <p className="prev">${el.prevprice}.00</p>
+                    )}
+                    <p className="price">${el.price}.00</p>
+                  </div>
+                  <div className="d-flex">
+                    <p className="star"><FaStar /></p>
+                    <p className="mt-1 mx-2"><b>{el.rate}</b></p>
+                  </div>
+                </div>
+                {el.percent !== null && el.percent !== "" && (
+                  <div className="percent px-2">
+                    <p>{el.percent}</p>
+                  </div>
                 )}
-              </div>
-              <div className="d-flex flex-column justify-content-center align-items-center py-2">
-                <div>
-                    <p>{el.title}</p>
-                </div>
-              <div className="color d-flex gap-2">
-                {el.colors?.map((color) => (
-                  <p
-                    key={color}
-                    style={{
-                      backgroundColor: color,
-                      width: "30px",
-                      height: "30px",
-                      borderRadius: "50%",
-                      cursor: "pointer",
-                      border: el.checkImg[color] ? "1px solid black" : "none",
-                    }}
-                    onClick={() => handleColor(el.id, color)}
-                  ></p>
-                ))}
-              </div>
-              <div>
-                    <p><b>${el.price}</b></p>
-                </div>
               </div>
             </div>
           ))}
         </div>
-        <div className="text-center py-2">
-        <Link className="view px-5 py-3" to={"/products"}>View More</Link>
+        <div className="text-center">
+          <Link className="view px-5 py-3" to={"/products"}>
+            View More
+          </Link>
         </div>
       </div>
     </div>

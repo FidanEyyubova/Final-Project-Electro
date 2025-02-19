@@ -48,7 +48,7 @@ const Home = () => {
                   alt="..."
                 />
                 <div class="carousel-caption d-lg-flex flex-column align-items-end justify-content-center h-100 text-start d-md-flex d-flex">
-                  <div>
+                  <div data-aos="fade-right">
                     <p>Good quality full guarantee</p>
                     <h1 className="pb-5 pt-1">
                       Luxury AD65 <br /> smart watch
@@ -60,24 +60,6 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <button
-              className="carousel-control-prev"
-              type="button"
-              data-bs-target="#carouselExampleAutoplaying"
-              data-bs-slide="prev"
-            >
-              <span className="carousel-control-prev-icon" aria-hidden="true" />
-              <span className="visually-hidden">Previous</span>
-            </button>
-            <button
-              className="carousel-control-next"
-              type="button"
-              data-bs-target="#carouselExampleAutoplaying"
-              data-bs-slide="next"
-            >
-              <span className="carousel-control-next-icon" aria-hidden="true" />
-              <span className="visually-hidden">Next</span>
-            </button>
           </div>
         </div>
         <div className="row second g-0 mb-5 d-flex  justify-content-center">
