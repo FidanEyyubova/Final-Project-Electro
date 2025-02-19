@@ -3,16 +3,18 @@ import { FaArrowRightLong, FaCircle } from "react-icons/fa6";
 import { MdPayment } from "react-icons/md";
 import { Link } from "react-router-dom";
 import TopPicks from "./TopPicks";
-import { IoMdTime } from "react-icons/io";
+import { IoMdReturnLeft, IoMdTime } from "react-icons/io";
 import { TbTruckDelivery } from "react-icons/tb";
 import { motion } from "framer-motion";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import { IoReturnDownBack } from "react-icons/io5";
+import { RiPriceTagLine, RiSecurePaymentLine } from "react-icons/ri";
 
 const Home = () => {
-    useEffect(() => {
-          Aos.init({ duration: 1000 });
-        }, []);
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
   return (
     <div className="home">
       <div className="container-fluid p-0">
@@ -146,62 +148,77 @@ const Home = () => {
         </div>
         <div className="row g-0 motion">
           <div className="col-12">
-          <div className="overflow-hidden">
-      <motion.div
-        animate={{ x: ["100%", "-100%"] }}
-        transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-        className="text-4xl font-bold"
-      >
-        <div className="d-flex gap-5 py-3 text justify-content-between">
-
-         <span className="mx-1">Summer sale discount 40% off all products</span>
-         <span className="mx-1">Explore the latest shopping related offers</span>
-         <span className="mx-1">Free delivery on orders over $100 discount.</span>
-        </div>
-      </motion.div>
-    </div>
+            <div className="overflow-hidden">
+              <motion.div
+                animate={{ x: ["100%", "-100%"] }}
+                transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+                className="text-4xl font-bold"
+              >
+                <div className="d-flex gap-5 py-3 text justify-content-between">
+                  <span className="mx-1">
+                    Summer sale discount 40% off all products
+                  </span>
+                  <span className="mx-1">
+                    Explore the latest shopping related offers
+                  </span>
+                  <span className="mx-1">
+                    Free delivery on orders over $100 discount.
+                  </span>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
         <div className="row g-0">
           <TopPicks />
         </div>
-        <div className="row g-0 delivery py-5 my-5">
-          <div className="col-lg-4 col-12">
-            <div className="d-flex justify-content-center">
+        <div className="row g-0">
+          <div className="col-12">
+            <div className="back py-4"></div>
+          </div>
+        </div>
+        <div className="row g-0 d-flex justify-content-center align-items-center del pt-4">
+          <div className="col-lg-3 col-12 d-flex justify-content-center align-items-center pt-4"> 
+            <div className="d-flex">
               <div>
-                <IoMdTime className="mx-3 icon" />
+                <TbTruckDelivery className="icon mt-3 mx-3" />
               </div>
               <div>
-                <h4>90 Days Return</h4>
-                <p>
-                  If goods have problems, consectetur <br /> adipim scing elit
-                </p>
+                <h5>Free shipping</h5>
+                <p>Orders over $100</p>
               </div>
             </div>
           </div>
-          <div className="col-lg-4 col-12">
-            <div className="d-flex justify-content-center">
+          <div className="col-lg-3 col-12 d-flex justify-content-center align-items-center pt-4">
+            <div className="d-flex">
               <div>
-                <TbTruckDelivery className="mx-3 icon" />
+              <IoMdReturnLeft className="icon mt-3 mx-3" />
               </div>
               <div>
-                <h4>Free Delivery</h4>
-                <p>
-                  For all oders over $50, consectetur <br /> adipim scing elit
-                </p>
+                <h5>Free returns</h5>
+                <p>With in 30 days</p>
               </div>
             </div>
           </div>
-          <div className="col-lg-4 col-12">
-            <div className="d-flex justify-content-center">
+          <div className="col-lg-3 col-12 d-flex justify-content-center align-items-center pt-4">
+            <div className="d-flex">
               <div>
-                <MdPayment className="mx-3 icon" />
+              <RiSecurePaymentLine className="icon mt-3 mx-3" />
               </div>
               <div>
-                <h4>Secure Payment</h4>
-                <p>
-                  100% secure payment, consectetur <br /> adipim scing elit
-                </p>
+                <h5>100% Secure</h5>
+                <p>Payment Online</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-3 col-12 d-flex justify-content-center align-items-center pt-4">
+            <div className="d-flex">
+              <div>
+              <RiPriceTagLine className="icon mt-3 mx-3" />
+              </div>
+              <div>
+                <h5>Best Price</h5>
+                <p>Guaranteed</p>
               </div>
             </div>
           </div>
