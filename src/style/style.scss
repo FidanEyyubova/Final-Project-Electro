@@ -431,8 +431,9 @@ background: linear-gradient(90deg, rgba(17,36,198,1) 0%, rgba(200,36,36,1) 96%);
 }
 
 .delivery {
-  background-color: #c9ddc4;
+  background-color: white;
   color: rgb(255, 255, 255);
+
   h4 {
     color: #4b5945;
   }
@@ -442,6 +443,9 @@ background: linear-gradient(90deg, rgba(17,36,198,1) 0%, rgba(200,36,36,1) 96%);
   }
   .icon {
     font-size: 30px;
+  }
+  img{
+    width: 200px;
   }
 }
 
@@ -498,4 +502,26 @@ font-weight: 500;
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
       background: white; /* Ensures the navbar background is visible */
       z-index: 1020; /* Keeps it above other elements */
+    }
+
+    .back{
+      background: rgb(17,36,198);
+      background: linear-gradient(90deg, rgba(17,36,198,1) 0%, rgba(200,36,36,1) 96%);
+    }
+
+    .del{
+      background-color: #f4f4f6;
+      .icon{
+        font-size: 30px;
+        color: #F13D45;
+      }
+      h5{
+        font-size: 23px;
+        font-weight: 600;
+      }
+      p{
+        font-size: 18px;
+        color: #6f6f6f;
+        font-weight: 500;
+      }
     }

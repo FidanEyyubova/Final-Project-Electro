@@ -56,7 +56,7 @@ const TopPicks = () => {
             </div>
           ))}
         </div>
-        <div className="text-center">
+        <div className="text-center mb-3">
           <Link className="view px-5 py-3" to={"/products"}>
             View More
           </Link>
