@@ -450,6 +450,11 @@ background: linear-gradient(90deg, rgba(17,36,198,1) 0%, rgba(200,36,36,1) 96%);
 
 // Products
 .products {
+  .back-img{
+    background-color: #b8b7b7;
+    height: 150px;
+    color: white;
+  }
   background-color: #f4f4f6;
   .image{
     background-color: white;
@@ -571,4 +576,180 @@ font-weight: 500;
 
 
 
-    
+
+
+
+
+
+
+
+
+    //product
+    .products{
+
+      .icon-b{
+        font-size: 20px;
+        color: #F13D45;
+      }
+      .form{
+        cursor: pointer;
+        border: none;
+        background-color: #f4f4f6;
+        width: 200px;
+        outline: none;
+      }
+      .element{
+        border: none;
+      }
+     
+      .sort{
+        font-size: 18px;
+        font-weight: 600;
+      }
+      label{
+        font-size: 18px;
+        color: #6f6f6f;
+      }
+      input[type="checkbox"] {
+        appearance: none; /* Removes default checkbox styles */
+        width: 13px;
+        height: 13px;
+        background-color: #dbdbdb; /* Default background */
+        border-radius: 3px; /* Optional */
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+      }
+      
+      input[type="checkbox"]:checked {
+        background-color: #F13D45; /* Background color when checked */
+      }
+      
+      input[type="checkbox"]:checked::after {
+        content: "✔"; /* Unicode tick symbol */
+        font-size: 9px;
+        color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: bold;
+      }
+      
+      
+      .custom-range {
+        appearance: none;
+        width: 100%;
+        height: 6px;
+        background: #ddd;
+        border-radius: 5px;
+        outline: none;
+        transition: 0.3s;
+      }
+      
+      .custom-range::-webkit-slider-thumb {
+        appearance: none;
+        width: 16px;
+        height: 16px;
+        background: #F13D45;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      
+      .custom-range::-moz-range-thumb {
+        width: 16px;
+        height: 16px;
+        background: #F13D45;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+   
+    }
+
+
+
+
+
+
+
+    .immg{
+      width: 360px;
+    }
+
+
+    .product-detail{
+      background-color: #f4f4f6;
+      span{
+        font-size: 18px
+      }
+      .prev{
+        color: #6f6f6f;
+      }
+      .container{
+        background-color: white;
+        border-radius: 20px;
+        border: 1px solid #9f9d9d;
+      }
+      .btn{
+        width: 50px;
+        background-color: white;
+      }
+      .quan{
+        border: 1px solid #9f9d9d;
+        border-radius: 10px;
+      }
+      .add{
+        width: 260px;
+        height: 50px;
+        border-radius: 10px;
+      }
+     h2{
+      color: #F13D45;
+     }
+     .star{
+      color: orange;
+      font-size: 23px;
+     }
+     .pro{
+      font-size: 20px;
+     }
+     .circle {
+      color: #0ea440;
+      box-shadow: 0 0 10px #0ea440;
+      background-color: #0ea440;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+  }
+  
+     .buy{
+      background-color: #F13D45;
+      color: white;
+      font-weight: 600;
+      border: none;
+      transition: background-color 0.5s ease;
+     }
+     .cart{
+      background-color: white;
+      font-weight: 600;
+      transition: background-color 0.5s ease;
+     }
+     .cart:hover{
+      background-color: #F13D45;
+      color: white;
+      border: none;
+     }
+     .buy:hover{
+      background-color: black;
+     }
+     .inc{
+      background-color: white;
+      border: none;
+      font-size: 20px;
+      color: #9f9d9d;
+      transition: color 0.4s ease;
+     }
+     .inc:hover{
+      color: #F13D45;
+     }
+    }

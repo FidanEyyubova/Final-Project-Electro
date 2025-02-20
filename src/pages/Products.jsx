@@ -7,6 +7,10 @@ import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa6";
 
 const Products = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const {
     product,
     setProduct,
@@ -24,28 +28,35 @@ const Products = () => {
 
   const [openTitle, setOpenTitle] = useState(false);
 
-  const handleSortChange = (e) => {
-    const value = e.target.value;
-    let sorted = [...product];
+  const [sortedProducts, setSortedProducts] = useState([]);
 
-    switch (value) {
-      case "az":
-        sorted.sort((a, b) => a.name.localeCompare(b.name));
-        break;
-      case "za":
-        sorted.sort((a, b) => b.name.localeCompare(a.name));
-        break;
-      case "low-high":
-        sorted.sort((a, b) => a.price - b.price);
-        break;
-      case "high-low":
-        sorted.sort((a, b) => b.price - a.price);
-        break;
-      default:
-        return;
-    }
-    setProduct(sorted);
-  };
+useEffect(() => {
+  setSortedProducts(product); // Initialize sortedProducts when products change
+}, [product]);
+
+const handleSortChange = (e) => {
+  const value = e.target.value;
+  let sorted = [...product];
+
+  switch (value) {
+    case "az":
+      sorted.sort((a, b) => a.name.localeCompare(b.name));
+      break;
+    case "za":
+      sorted.sort((a, b) => b.name.localeCompare(a.name));
+      break;
+    case "low-high":
+      sorted.sort((a, b) => a.price - b.price);
+      break;
+    case "high-low":
+      sorted.sort((a, b) => b.price - a.price);
+      break;
+    default:
+      return;
+  }
+  setSortedProducts(sorted); // Update only sortedProducts
+};
+
 
   const categories = ["All", ...new Set(product.map((el) => el.category))];
 
@@ -68,7 +79,7 @@ const Products = () => {
     setFilteredBrand("All");
   };
 
-  const filteredProducts = product.filter(
+  const filteredProducts = sortedProducts.filter(
     (el) =>
       (filteredCategory === "All" || el.category === filteredCategory) &&
       (filteredBrand === "All" || el.brand === filteredBrand) &&
@@ -81,76 +92,95 @@ const Products = () => {
   return (
     <div className="products">
       <div className="container-fluid">
-        <div className="row">
-          <div className="col-12 image d-flex justify-content-center align-items-center">
+        <div className="row back-img">
+          <div className="col-12 d-flex justify-content-center align-items-center">
             <h1>
               <i>PRODUCTS</i>
             </h1>
           </div>
         </div>
 
-        <div className="row middle">
-          <div className="col-lg-4">
-            <div>
-              <h4>Category</h4>
-              <select
-                className="form-select mb-2"
-                value={filteredCategory}
-                onChange={handleCategoryChange}
-              >
-                {categories.map((category) => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
-
-              <h4>Stock</h4>
+        <div className="row middle py-4 d-flex gap-5 justify-content-center">
+          <div className="col-lg-3">
+            <div className="d-flex flex-column gap-4 py-3">
               <div>
-                {stocks.map((stock) => (
-                  <div key={stock}>
+                <h5>Categories</h5>
+                {categories.map((category) => (
+                  <div className="py-2" key={category}>
                     <input
-                      type="radio"
-                      name="stock"
-                      value={stock}
-                      checked={filteredStock === stock}
-                      onChange={(e) => setFilteredStock(e.target.value)}
+                      type="checkbox"
+                      name="category"
+                      className="mx-2"
+                      value={category}
+                      checked={filteredCategory === category}
+                      onChange={(e) => setFilteredCategory(e.target.value)}
                     />
-                    <label>{stock}</label>
+                    <label>{category}</label>
+                  </div>
+                ))}
+              </div>
+              <div>
+                <h4>Stock</h4>
+                <div>
+                  {stocks.map((stock) => (
+                    <div key={stock} className="py-2">
+                      <input
+                        type="checkbox"
+                        name="stock"
+                        className="mx-2"
+                        value={stock}
+                        checked={filteredStock === stock}
+                        onChange={(e) => setFilteredStock(e.target.value)}
+                      />
+                      <label>{stock}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h4>Brand</h4>
+                {filteredBrands.map((brand) => (
+                  <div className="py-2" key={brand}>
+                    <input
+                      type="checkbox"
+                      name="category"
+                      className="mx-2"
+                      value={brand}
+                      checked={filteredBrand === brand}
+                      onChange={(e) => setFilteredBrand(e.target.value)}
+                    />
+                    <label>{brand}</label>
                   </div>
                 ))}
               </div>
 
-              <h4>Brand</h4>
-              <select
-                className="form-select mb-2"
-                value={filteredBrand}
-                onChange={(e) => setFilteredBrand(e.target.value)}
-              >
-                {filteredBrands.map((brand) => (
-                  <option key={brand} value={brand}>
-                    {brand}
-                  </option>
-                ))}
-              </select>
-
-              <h4>Max Price: ${maxPrice}</h4>
-              <input
-                type="range"
-                className="form-range"
-                min="0"
-                max="1700"
-                step="50"
-                value={maxPrice}
-                onChange={(e) => setMaxPrice(Number(e.target.value))}
-              />
+              <div>
+                <h4>Max Price: ${maxPrice}</h4>
+                <input
+                  type="range"
+                  className="form-range custom-range"
+                  min="0"
+                  max="3000"
+                  step="50"
+                  value={maxPrice}
+                  onChange={(e) => setMaxPrice(Number(e.target.value))}
+                />
+              </div>
             </div>
 
-            <div>
+            <div className="mb-4">
               <h4>Best Sellers</h4>
-              <div className="d-flex flex-column flex-wrap gap-2">
-                {product.slice(0, 4).map((el) => (
-                  <div key={el.id}>{el.name}</div>
+              <div className="d-flex flex-column flex-wrap gap-2 mt-4">
+                {product.slice(0, 2).map((el) => (
+                  <div key={el.id} className="d-flex slm mb-2" style={{backgroundColor: "white", borderRadius : "10px"}}>
+                    <div className="mx-3 py-3">
+                      <img src={el.img} alt="" style={{width: "60px", height : "60px"}} />
+                    </div>
+                    <div className="mx-3 pt-3">
+                      <p><b>{el.name.slice(0,20)}...</b></p>
+                      <p style={{color: "#F13D45", fontWeight : "600"}}>{el.price}.00</p>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -158,16 +188,12 @@ const Products = () => {
 
           <div className="col-lg-8">
             <div className="d-flex justify-content-between align-items-center">
-              <div>
-                <GrCubes />
-                <GiHamburgerMenu />
+              <div className="d-flex gap-3 mx-2">
+                <GrCubes className="icon-b" />
               </div>
-              <div className="d-flex">
-                <h5>Sort by</h5>
-                <select
-                  className="form-select mb-2"
-                  onChange={handleSortChange}
-                >
+              <div className="d-flex gap-3">
+                <p className="mt-2 sort">Sort</p>
+                <select className="form mb-2" onChange={handleSortChange}>
                   <option value="az">A-Z</option>
                   <option value="za">Z-A</option>
                   <option value="low-high">Price: Low to High</option>
@@ -193,7 +219,7 @@ const Products = () => {
                     <div className="d-flex flex-column justify-content-center align-items-center py-2">
                       <div className="py-2">
                         <h5>
-                          <b>{el.name}</b>
+                          <Link to={`/products/${el.id}`}>{el.name}</Link>
                         </h5>
                       </div>
                       <div className="d-flex gap-2">
@@ -221,11 +247,11 @@ const Products = () => {
               ))}
             </div>
           </div>
-            <div className="row g-0">
-          <div className="col-12">
-            <div className="back py-4"></div>
+          <div className="row g-0">
+            <div className="col-12">
+              <div className="back py-4"></div>
+            </div>
           </div>
-        </div>
         </div>
       </div>
     </div>
