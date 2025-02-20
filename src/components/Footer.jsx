@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <div className="footer d-flex justify-content-center align-items-center">
       <div className="container-fluid">
-      <div className="row g-0 d-flex justify-content-center align-items-center del pt-4 border-bottom mx-3 pb-4">
+      <div className="row g-0 d-flex justify-content-center align-items-center del  border-bottom mx-3 pb-4">
           <div className="col-lg-3 col-12 d-flex justify-content-center align-items-center pt-4"> 
             <div className="d-flex">
               <div>
@@ -56,7 +56,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="row mx-3 border-bottom py-3">
-          <div className="col-lg-3 col-md-12 col-12 my-3">
+          <div className="col-lg-3 col-md-12 col-12 my-3 d-flex justify-content-center">
             <div>
               <p>
                 <b>Electro</b> is an innovative website <br /> for electronics,
@@ -65,7 +65,7 @@ const Footer = () => {
               </p>
             </div>
           </div>
-          <div className="col-lg-3 col-md-12 col-12 ">
+          <div className="col-lg-3 col-md-12 col-12 d-flex justify-content-center ">
             <div>
               <ul className="nav flex-column">
                 <li className="nav-item mb-2 my-3">
@@ -80,7 +80,7 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          <div className="col-lg-3 col-md-12 col-12">
+          <div className="col-lg-3 col-md-12 col-12 d-flex justify-content-center">
             <div>
               <ul className="nav flex-column">
                 <li className="nav-item mb-2 my-3">
@@ -97,7 +97,7 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          <div className="col-lg-3 col-md-12 col-12 py-3">
+          <div className="col-lg-3 col-md-12 col-12 py-3 d-flex justify-content-center">
             <div>
               <h5>Follow us</h5>
               <div className="d-flex gap-3">

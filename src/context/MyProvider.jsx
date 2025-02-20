@@ -12,7 +12,7 @@ const MyProvider = ({ children }) => {
   const [filteredCategory, setFilteredCategory] = useState("All");
   const [filteredBrand, setFilteredBrand] = useState("All");
   const [filteredStock, setFilteredStock] = useState("in stock");
-  const [maxPrice, setMaxPrice] = useState(1700);
+  const [maxPrice, setMaxPrice] = useState(3000);
   const [rate, setMaxRate] = useState(5);
 
   useEffect(() => {
