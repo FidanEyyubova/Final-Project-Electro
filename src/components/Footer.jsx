@@ -1,14 +1,59 @@
 import React from "react";
 import { FaFacebookF, FaInstagram } from "react-icons/fa6";
-import { RiTwitterXFill } from "react-icons/ri";
+import { IoMdReturnLeft } from "react-icons/io";
+import { RiPriceTagLine, RiSecurePaymentLine, RiTwitterXFill } from "react-icons/ri";
+import { TbTruckDelivery } from "react-icons/tb";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <div className="footer d-flex justify-content-center align-items-center">
       <div className="container-fluid">
-        <div className="row mx-3 border-bottom py-4">
-          <img src="../src/images/logo.png" alt="" />
+      <div className="row g-0 d-flex justify-content-center align-items-center del pt-4 border-bottom mx-3 pb-4">
+          <div className="col-lg-3 col-12 d-flex justify-content-center align-items-center pt-4"> 
+            <div className="d-flex">
+              <div>
+                <TbTruckDelivery className="icon mt-3 mx-3" />
+              </div>
+              <div>
+                <h5>Free shipping</h5>
+                <p>Orders over $100</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-3 col-12 d-flex justify-content-center align-items-center pt-4">
+            <div className="d-flex">
+              <div>
+              <IoMdReturnLeft className="icon mt-3 mx-3" />
+              </div>
+              <div>
+                <h5>Free returns</h5>
+                <p>With in 30 days</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-3 col-12 d-flex justify-content-center align-items-center pt-4">
+            <div className="d-flex">
+              <div>
+              <RiSecurePaymentLine className="icon mt-3 mx-3" />
+              </div>
+              <div>
+                <h5>100% Secure</h5>
+                <p>Payment Online</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-3 col-12 d-flex justify-content-center align-items-center pt-4">
+            <div className="d-flex">
+              <div>
+              <RiPriceTagLine className="icon mt-3 mx-3" />
+              </div>
+              <div>
+                <h5>Best Price</h5>
+                <p>Guaranteed</p>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="row mx-3 border-bottom py-3">
           <div className="col-lg-3 col-md-12 col-12 my-3">

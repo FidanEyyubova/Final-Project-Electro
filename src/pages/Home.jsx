@@ -177,52 +177,7 @@ const Home = () => {
             <div className="back py-4"></div>
           </div>
         </div>
-        <div className="row g-0 d-flex justify-content-center align-items-center del pt-4">
-          <div className="col-lg-3 col-12 d-flex justify-content-center align-items-center pt-4"> 
-            <div className="d-flex">
-              <div>
-                <TbTruckDelivery className="icon mt-3 mx-3" />
-              </div>
-              <div>
-                <h5>Free shipping</h5>
-                <p>Orders over $100</p>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-3 col-12 d-flex justify-content-center align-items-center pt-4">
-            <div className="d-flex">
-              <div>
-              <IoMdReturnLeft className="icon mt-3 mx-3" />
-              </div>
-              <div>
-                <h5>Free returns</h5>
-                <p>With in 30 days</p>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-3 col-12 d-flex justify-content-center align-items-center pt-4">
-            <div className="d-flex">
-              <div>
-              <RiSecurePaymentLine className="icon mt-3 mx-3" />
-              </div>
-              <div>
-                <h5>100% Secure</h5>
-                <p>Payment Online</p>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-3 col-12 d-flex justify-content-center align-items-center pt-4">
-            <div className="d-flex">
-              <div>
-              <RiPriceTagLine className="icon mt-3 mx-3" />
-              </div>
-              <div>
-                <h5>Best Price</h5>
-                <p>Guaranteed</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </div>
   );

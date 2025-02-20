@@ -36,7 +36,14 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <Link className=" page mt-2 mx-3">PRODUCTS</Link>
+            <NavLink
+                className={({ isActive }) =>
+                  isActive ? " active mt-2 mx-3" : " page mt-2 mx-3"
+                }
+                to="/products"
+              >
+                PRODUCTS
+              </NavLink>
             </li>
             <li className="nav-item">
               <Link className=" page mt-2 mx-3">BLOG</Link>

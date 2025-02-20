@@ -103,13 +103,13 @@ background: linear-gradient(90deg, rgba(17,36,198,1) 0%, rgba(200,36,36,1) 96%);
 .about {
   .container-fluid {
     .header {
-      background-image: url("https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcm00MDUtYzAxYV8xLmpwZw.jpg");
+      background-image: url("https://wallpaperaccess.com/full/1285952.jpg");
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
       color: white;
       position: relative;
-      height: 250px;
+      height: 150px;
       p {
         font-weight: bold;
         position: relative;
@@ -123,7 +123,6 @@ background: linear-gradient(90deg, rgba(17,36,198,1) 0%, rgba(200,36,36,1) 96%);
       width: 100%;
       height: 100%;
       background-color: rgba(0, 0, 0, 0.205);
-      border-radius: 7px;
     }
   }
   .middle {
@@ -451,30 +450,73 @@ background: linear-gradient(90deg, rgba(17,36,198,1) 0%, rgba(200,36,36,1) 96%);
 
 // Products
 .products {
-  .image {
-    background-image: url("https://mb-demo1.myshopify.com/cdn/shop/files/furniture.png?v=1704968766");
-    background-position: center center;
-    object-fit: cover;
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 200px;
+  background-color: #f4f4f6;
+  .image{
+    background-color: white;
+    width: 250px;
+    height: 240px;
+    border-radius: 10px;
+  }
+  .price{
+    color: #6f6f6f;
+    font-weight: 500;
+  }
+  img {
+    width: 140px;
+    height: 140px;
+    border-radius: 20px;
+  }
+  .percent{
     position: relative;
+    left: -98px;
+    bottom: 370px;
+    background-color: #0ea440;
     color: white;
+    font-weight: 600;
+    height: 26px;
+    font-size: 18px;
   }
-  h1 {
-    position: relative;
-    z-index: 2;
+  .prev{
+    text-decoration: line-through;
+    color: #6f6f6f;
   }
-  .image::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.127);
-    border-radius: 7px;
+  h1{
+    font-weight: 600;
   }
+  .cont{
+    cursor: pointer;
+  }
+  .icon {
+    color: black;
+    font-size: 20px;
+    font-weight: 500;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+.icon:hover{
+  color: white;
+  background-color: #F13D45;
+  font-size: 20px;
+  font-weight: 500;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  border: 1px solid white;
+  border-radius: 50%;
+  transition: background-color 0.6s ease;
+}
+
+.image:hover .icon {
+    opacity: 1;
+    transform: scale(1);
+}
+.star{
+  font-size: 17px;
+  color: orange;
+}
 }
 
     .category:hover{
@@ -511,6 +553,7 @@ font-weight: 500;
 
     .del{
       background-color: #f4f4f6;
+      border-bottom: 1px solid red;
       .icon{
         font-size: 30px;
         color: #F13D45;
@@ -525,3 +568,7 @@ font-weight: 500;
         font-weight: 500;
       }
     }
+
+
+
+    
