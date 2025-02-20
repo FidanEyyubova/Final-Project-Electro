@@ -10,8 +10,8 @@ const apikey =
 const MyProvider = ({ children }) => {
   const [product, setProduct] = useState([]);
   const [filteredCategory, setFilteredCategory] = useState("All");
-  const [filteredColor, setFilteredColor] = useState("All");
-  const [filteredMaterial, setFilteredMaterial] = useState("All");
+  const [filteredBrand, setFilteredBrand] = useState("All");
+  const [filteredStock, setFilteredStock] = useState("in stock");
   const [maxPrice, setMaxPrice] = useState(1700);
   const [rate, setMaxRate] = useState(5);
 
@@ -33,15 +33,15 @@ const MyProvider = ({ children }) => {
         product,
         setProduct,
         filteredCategory,
-        filteredColor,
-        filteredMaterial,
+        filteredBrand,
         maxPrice,
         rate,
         setFilteredCategory,
-        setFilteredColor,
-        setFilteredMaterial,
+        setFilteredBrand,
         setMaxRate,
         setMaxPrice,
+        filteredStock,
+        setFilteredStock,
       }}
     >
       {children}

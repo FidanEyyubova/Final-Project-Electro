@@ -1,21 +1,28 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MyContext } from "../context/MyProvider";
+import { GrCubes } from "react-icons/gr";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { CiHeart, CiShoppingBasket } from "react-icons/ci";
+import { Link } from "react-router-dom";
+import { FaStar } from "react-icons/fa6";
 
 const Products = () => {
   const {
     product,
     setProduct,
     filteredCategory,
-    filteredColor,
-    filteredMaterial,
+    filteredBrand,
     maxPrice,
     rate,
     setFilteredCategory,
-    setFilteredColor,
-    setFilteredMaterial,
+    setFilteredBrand,
     setMaxRate,
     setMaxPrice,
+    filteredStock,
+    setFilteredStock,
   } = useContext(MyContext);
+
+  const [openTitle, setOpenTitle] = useState(false);
 
   const handleSortChange = (e) => {
     const value = e.target.value;
@@ -23,10 +30,10 @@ const Products = () => {
 
     switch (value) {
       case "az":
-        sorted.sort((a, b) => a.title.localeCompare(b.title));
+        sorted.sort((a, b) => a.name.localeCompare(b.name));
         break;
       case "za":
-        sorted.sort((a, b) => b.title.localeCompare(a.title));
+        sorted.sort((a, b) => b.name.localeCompare(a.name));
         break;
       case "low-high":
         sorted.sort((a, b) => a.price - b.price);
@@ -41,43 +48,38 @@ const Products = () => {
   };
 
   const categories = ["All", ...new Set(product.map((el) => el.category))];
-  const colors = ["All", ...new Set(product.flatMap((el) => el.colors))];
-  const materials = ["All", ...new Set(product.map((el) => el.material))];
+
+  const stocks = [...new Set(product.map((el) => el.stock))];
+
+  const filteredBrands =
+    filteredCategory === "All"
+      ? ["All", ...new Set(product.map((el) => el.brand))]
+      : [
+          "All",
+          ...new Set(
+            product
+              .filter((el) => el.category === filteredCategory)
+              .map((el) => el.brand)
+          ),
+        ];
+
+  const handleCategoryChange = (e) => {
+    setFilteredCategory(e.target.value);
+    setFilteredBrand("All");
+  };
 
   const filteredProducts = product.filter(
     (el) =>
       (filteredCategory === "All" || el.category === filteredCategory) &&
-      (filteredMaterial === "All" || el.material === filteredMaterial) &&
-      (filteredColor === "All" || el.colors.includes(filteredColor)) &&
+      (filteredBrand === "All" || el.brand === filteredBrand) &&
+      el.stock === filteredStock &&
       el.price <= maxPrice &&
       el.rate <= rate
   );
 
-  const handleColorChange = (selectedColor) => {
-    setFilteredColor(selectedColor);
-
-    setProduct((prevProducts) =>
-      prevProducts.map((item) => {
-        if (item.colors.includes(selectedColor)) {
-          const newCheckImg = Object.keys(item.checkImg).reduce(
-            (acc, color) => {
-              acc[color] = false;
-              return acc;
-            },
-            {}
-          );
-          newCheckImg[selectedColor] = true;
-
-          return { ...item, checkImg: newCheckImg };
-        }
-        return item;
-      })
-    );
-  };
-
+  console.log(filteredProducts);
   return (
     <div className="products">
-      
       <div className="container-fluid">
         <div className="row">
           <div className="col-12 image d-flex justify-content-center align-items-center">
@@ -87,15 +89,14 @@ const Products = () => {
           </div>
         </div>
 
-        <div className="row">
+        <div className="row middle">
           <div className="col-lg-4">
-            
             <div>
               <h4>Category</h4>
               <select
                 className="form-select mb-2"
                 value={filteredCategory}
-                onChange={(e) => setFilteredCategory(e.target.value)}
+                onChange={handleCategoryChange}
               >
                 {categories.map((category) => (
                   <option key={category} value={category}>
@@ -104,15 +105,31 @@ const Products = () => {
                 ))}
               </select>
 
-              <h4>Material</h4>
+              <h4>Stock</h4>
+              <div>
+                {stocks.map((stock) => (
+                  <div key={stock}>
+                    <input
+                      type="radio"
+                      name="stock"
+                      value={stock}
+                      checked={filteredStock === stock}
+                      onChange={(e) => setFilteredStock(e.target.value)}
+                    />
+                    <label>{stock}</label>
+                  </div>
+                ))}
+              </div>
+
+              <h4>Brand</h4>
               <select
                 className="form-select mb-2"
-                value={filteredMaterial}
-                onChange={(e) => setFilteredMaterial(e.target.value)}
+                value={filteredBrand}
+                onChange={(e) => setFilteredBrand(e.target.value)}
               >
-                {materials.map((material) => (
-                  <option key={material} value={material}>
-                    {material}
+                {filteredBrands.map((brand) => (
+                  <option key={brand} value={brand}>
+                    {brand}
                   </option>
                 ))}
               </select>
@@ -130,82 +147,85 @@ const Products = () => {
             </div>
 
             <div>
-              <h4>Color</h4>
-              <div className="d-flex flex-wrap gap-2">
-                {colors.map((color) => (
-                  <div
-                    key={color}
-                    style={{
-                      width: "30px",
-                      height: "30px",
-                      borderRadius: "50%",
-                      backgroundColor: color,
-                      border:
-                        filteredColor === color
-                          ? "3px solid black"
-                          : "1px solid lightgray",
-                      cursor: "pointer",
-                      transition: "0.3s",
-                    }}
-                    title={color}
-                    onClick={() => handleColorChange(color)}
-                  ></div>
-                ))}
-              </div>
-            </div>
-            <div>
               <h4>Best Sellers</h4>
               <div className="d-flex flex-column flex-wrap gap-2">
-                {product.slice(0,4).map((el) => (
-                  <div>{el.title}</div>
+                {product.slice(0, 4).map((el) => (
+                  <div key={el.id}>{el.name}</div>
                 ))}
               </div>
             </div>
           </div>
 
           <div className="col-lg-8">
-          <div>
-          <h4>Sort by</h4>
-            <select className="form-select mb-2" onChange={handleSortChange}>
-              <option value="az">A-Z</option>
-              <option value="za">Z-A</option>
-              <option value="low-high">Price: Low to High</option>
-              <option value="high-low">Price: High to Low</option>
-            </select>
-          </div>
+            <div className="d-flex justify-content-between align-items-center">
+              <div>
+                <GrCubes />
+                <GiHamburgerMenu />
+              </div>
+              <div className="d-flex">
+                <h5>Sort by</h5>
+                <select
+                  className="form-select mb-2"
+                  onChange={handleSortChange}
+                >
+                  <option value="az">A-Z</option>
+                  <option value="za">Z-A</option>
+                  <option value="low-high">Price: Low to High</option>
+                  <option value="high-low">Price: High to Low</option>
+                </select>
+              </div>
+            </div>
             <div className="row">
-              {filteredProducts.length > 0 ? (
-                filteredProducts.map((item) => (
-                  <div key={item.id} className="col-md-4">
-                    <div className="card">
-                      <div className="text-center">
-                        {Object.keys(item.checkImg).map((color) =>
-                          item.checkImg[color] ? (
-                            <img
-                              key={color}
-                              src={item.linkImg[color]}
-                              alt={color}
-                              className="card-img-top"
-                            />
-                          ) : null
-                        )}
+              {filteredProducts.map((el) => (
+                <div key={el.id} className="col-md-4">
+                  <div className="cont my-2 d-flex flex-column justify-content-center align-items-center">
+                    <div className="image  text-center py-2 pt-5">
+                      <img src={el.img} />
+                      <div className="d-flex justify-content-between align-items-center mx-3">
+                        <Link className="icon px-2 pb-1">
+                          <CiHeart />
+                        </Link>
+                        <Link className="icon px-2 pb-1">
+                          <CiShoppingBasket />
+                        </Link>
                       </div>
-                      <div className="body">
-                        <h5 className="title">{item.title}</h5>
-                        <p className="category text">Category: {item.category}</p>
-                        <p className="material text">Material: {item.material}</p>
-                        <p className="price text">
-                          <b>${item.price}</b>
+                    </div>
+                    <div className="d-flex flex-column justify-content-center align-items-center py-2">
+                      <div className="py-2">
+                        <h5>
+                          <b>{el.name}</b>
+                        </h5>
+                      </div>
+                      <div className="d-flex gap-2">
+                        {el.prevprice !== null && el.prevprice !== "" && (
+                          <p className="prev">${el.prevprice}.00</p>
+                        )}
+                        <p className="price">${el.price}.00</p>
+                      </div>
+                      <div className="d-flex">
+                        <p className="star">
+                          <FaStar />
+                        </p>
+                        <p className="mt-1 mx-2">
+                          <b>{el.rate}</b>
                         </p>
                       </div>
                     </div>
+                    {el.percent !== null && el.percent !== "" && (
+                      <div className="percent px-2">
+                        <p>{el.percent}</p>
+                      </div>
+                    )}
                   </div>
-                ))
-              ) : (
-                <p>No products match your selection.</p>
-              )}
+                </div>
+              ))}
             </div>
           </div>
+            <div className="row g-0">
+          <div className="col-12">
+            <div className="back py-4"></div>
+          </div>
+        </div>
         </div>
       </div>
     </div>
