@@ -1,18 +1,24 @@
-import React from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
+import React, { useEffect } from "react";
 
 const Faq = () => {
+    useEffect(() => {
+      Aos.init({ duration: 1000, once : true });
+      window.scroll(0,0)
+    }, []);
   return (
-    <div className="faq py-5">
+    <div className="faq">
       <div className="container-fluid">
-        <div className=" p-md-5 mb-4 rounded bg-body-secondary header d-flex justify-content-center">
-          <div className="col-lg-6 py-2 about-col d-flex justify-content-center align-items-center">
-            <h1 className="display-4 fst-italic text-center">
-              <p>Frequently Asked Questions</p>
+      <div className="row back-img">
+          <div className="col-12 d-flex justify-content-center align-items-center">
+            <h1>
+              <i>FREQUENTLY ASKED QUESTIONS</i>
             </h1>
           </div>
         </div>
-        <div className="row five g-0 py-4" id="faq">
-          <div className="col-12">
+        <div className="row five g-0 py-4 d-flex justify-content-center" id="faq"  data-aos="fade-down">
+          <div className="col-12  d-flex justify-content-center">
             <div className="d-flex flex-column justify-content-center align-items-center mt-3">
               <div className="w-75 py-3">
                 <div className="accordion" id="accordionExample">

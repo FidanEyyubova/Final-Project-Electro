@@ -8,7 +8,12 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="footer d-flex justify-content-center align-items-center">
-      <div className="container-fluid">
+      <div className="container-fluid g-0">
+      <div className="row g-0">
+            <div className="col-12">
+              <div className="back py-4"></div>
+            </div>
+          </div>
       <div className="row g-0 d-flex justify-content-center align-items-center del  border-bottom mx-3 pb-4">
           <div className="col-lg-3 col-12 d-flex justify-content-center align-items-center pt-4"> 
             <div className="d-flex">
