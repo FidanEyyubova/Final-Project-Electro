@@ -18,7 +18,12 @@ const Faq = () => {
           </div>
         </div>
         <div className="row five g-0 py-4 d-flex justify-content-center" id="faq"  data-aos="fade-down">
-          <div className="col-12  d-flex justify-content-center">
+          <div className="col-lg-3">
+            <div>
+              
+            </div>
+          </div>
+          <div className="col-lg-9 col-12  d-flex justify-content-center">
             <div className="d-flex flex-column justify-content-center align-items-center mt-3">
               <div className="w-75 py-3">
                 <div className="accordion" id="accordionExample">

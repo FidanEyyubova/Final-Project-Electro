@@ -71,7 +71,9 @@ const Navbar = () => {
               </ul>
             </li>
             <li className="nav-item">
-              <Link className=" page mt-2 mx-3">CONTACT</Link>
+            <NavLink className={({ isActive }) => (isActive ? "active" : "page")} to="/contact">
+                    CONTACT
+                  </NavLink>
             </li>
           </ul>
           <div className="icons d-flex gap-4 px-4">
