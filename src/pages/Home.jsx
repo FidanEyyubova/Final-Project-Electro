@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FaArrowRightLong, FaCircle } from "react-icons/fa6";
 import { MdPayment } from "react-icons/md";
 import { Link } from "react-router-dom";
@@ -14,7 +14,9 @@ import { RiPriceTagLine, RiSecurePaymentLine } from "react-icons/ri";
 const Home = () => {
   useEffect(() => {
     Aos.init({ duration: 1000 });
+    window.scroll(0, 0);
   }, []);
+
   return (
     <div className="home">
       <div className="container-fluid p-0">
@@ -172,12 +174,6 @@ const Home = () => {
         <div className="row g-0">
           <TopPicks />
         </div>
-        <div className="row g-0">
-          <div className="col-12">
-            <div className="back py-4"></div>
-          </div>
-        </div>
-        
       </div>
     </div>
   );

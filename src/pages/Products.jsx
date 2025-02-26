@@ -5,10 +5,13 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { CiHeart, CiShoppingBasket } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa6";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const Products = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+    Aos.init({ duration: 1000, once : true });
   }, []);
 
   const {
@@ -186,7 +189,7 @@ const handleSortChange = (e) => {
             </div>
           </div>
 
-          <div className="col-lg-8">
+          <div className="col-lg-8 ">
             <div className="d-flex justify-content-between align-items-center">
               <div className="d-flex gap-3 mx-2">
                 <GrCubes className="icon-b" />
@@ -247,11 +250,7 @@ const handleSortChange = (e) => {
               ))}
             </div>
           </div>
-          <div className="row g-0">
-            <div className="col-12">
-              <div className="back py-4"></div>
-            </div>
-          </div>
+         
         </div>
       </div>
     </div>
