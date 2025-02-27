@@ -897,3 +897,20 @@ iframe {
 }
     
     }
+
+
+
+    .faq-b{
+      border-right: 1px solid #a0a0a0;
+      h2{
+        color: #F13D45!important;
+      }
+      p{
+        font-size: 18px;
+        transition: color 0.3s ease;
+      }
+      p:hover{
+        color: #F13D45;
+        cursor: pointer;
+      }
+    }
