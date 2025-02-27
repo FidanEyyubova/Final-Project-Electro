@@ -794,3 +794,106 @@ font-weight: 500;
         height: 500px;
       }
     }
+
+    .vision-b{
+      background-color: white;
+      
+      .icon{
+        background-color: #f1f1f1;
+      }
+    }
+
+    .conc{
+      background-color: #f1f1f1;
+      h1{
+        font-weight: 600;
+      }
+      input{
+        width: 480px;
+        height: 50px;
+        border: 1px solid #b8b7b7;
+        border-radius: 6px;
+        outline: none;
+        font-size: 16px; /* Consistent text size */
+        line-height: 50px;
+        caret-color: #F13D45;
+        text-indent: 10px;
+      }
+      textarea{
+        width: 480px;
+        height:200px;
+        border: 1px solid #b8b7b7;
+        border-radius: 6px;
+        outline: none;
+        font-size: 16px; /* Consistent text size */
+        line-height: 50px;
+        caret-color: #F13D45;
+        text-indent: 10px;
+      }
+      .check{
+        width: 15px;
+      }
+      button{
+        width: 150px;
+        height: 50px;
+        font-size: 18px;
+        font-weight: 500;
+      }
+      .end{
+        width: 100%;
+      }
+      input[type="checkbox"] {
+        appearance: none; /* Removes default checkbox styles */
+        width: 23px;
+        height: 13px;
+        background-color: #dbdbdb; /* Default background */
+        border-radius: 3px; /* Optional */
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        
+      }
+      
+      input[type="checkbox"]:checked {
+        background-color: #F13D45; /* Background color when checked */
+      }
+      
+      input[type="checkbox"]:checked::after {
+        content: "✔"; /* Unicode tick symbol */
+        font-size: 9px;
+        color: white;
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        transform: translate(-50%, -50%);
+        font-weight: bold;
+
+      }
+      input::placeholder {
+        color: #a0a0a0; /* Lighter gray for placeholder text */
+        font-size: 16px;
+        opacity: 1;
+    }
+    textarea::placeholder {
+      color: #a0a0a0; /* Lighter gray for placeholder text */
+      font-size: 16px;
+      opacity: 1;
+  }
+  .map-container {
+    width: 1500px;
+    height: 100vh; /* Full viewport height */
+}
+input:focus{
+border: 1px solid #F13D45;
+}
+textarea:focus{
+  border: 1px solid #F13D45;
+  }
+
+iframe {
+    border: 0;
+    width: 1500px;
+    height: 100%;
+}
+    
+    }
