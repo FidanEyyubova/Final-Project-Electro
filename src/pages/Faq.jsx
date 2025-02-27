@@ -1,6 +1,8 @@
 import Aos from "aos";
 import "aos/dist/aos.css";
 import React, { useEffect } from "react";
+import { FaRegEnvelope } from "react-icons/fa";
+import { MdLocalPhone } from "react-icons/md";
 
 const Faq = () => {
     useEffect(() => {
@@ -18,12 +20,24 @@ const Faq = () => {
           </div>
         </div>
         <div className="row five g-0 py-4 d-flex justify-content-center" id="faq"  data-aos="fade-down">
-          <div className="col-lg-3">
-            <div>
-              
+          <div className="col-lg-4 faq-b d-flex justify-content-center mt-4">
+            <div className="d-flex flex-column gap-4">
+              <h2>Most popular <br /> questions</h2>
+              <div>
+              <h5>ASK US ANYTHING</h5>
+
+              <div className="d-flex gap-2 pt-3">
+              <p className="icon"><MdLocalPhone /></p>
+              <p>+00-1234567890</p>
+              </div>
+              <div className="d-flex gap-2">
+              <p className="icon"><FaRegEnvelope /></p>
+              <p>demo@support.com</p>
+              </div>
+              </div>
             </div>
           </div>
-          <div className="col-lg-9 col-12  d-flex justify-content-center">
+          <div className="col-lg-8 col-12  d-flex justify-content-center">
             <div className="d-flex flex-column justify-content-center align-items-center mt-3">
               <div className="w-75 py-3">
                 <div className="accordion" id="accordionExample">
