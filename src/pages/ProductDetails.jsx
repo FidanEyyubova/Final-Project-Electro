@@ -35,7 +35,7 @@ const ProductDetails = () => {
         <div className="row g-0 py-5">
           <div className="col-lg-7 d-flex justify-content-center py-4">
             {productDetail ? (
-              <div className="immg mx-5 py-4">
+              <div className="immg mx-5 mt-4 py-4">
                 <ReactImageMagnify
                   {...{
                     smallImage: {
@@ -113,8 +113,8 @@ const ProductDetails = () => {
             </div>
           </div>
         </div>
-        <div className="row g-0 text py-4">
-          <div className="col-12">
+        <div className="row g-0 text py-4 d-flex justify-content-center align-items-center">
+          <div className="col-12 d-flex justify-content-center align-items-center">
             <div>
               {productDetail && (
                 <div>
@@ -145,11 +145,6 @@ const ProductDetails = () => {
               )}
             </div>
           </div>
-        </div>
-      </div>
-      <div className="row g-0">
-        <div className="col-12">
-          <div className="back py-4"></div>
         </div>
       </div>
     </div>

@@ -1,6 +1,4 @@
 import React from "react";
-import { BsCurrencyDollar } from "react-icons/bs";
-import { FaEuroSign, FaManatSign } from "react-icons/fa6";
 import { IoMdMoon } from "react-icons/io";
 
 const Header = () => {
@@ -32,13 +30,11 @@ const Header = () => {
               </ul>
             </div>
           </div>
-
-
           <div className="col-lg-6 col-md-6 col-6 d-flex justify-content-end align-items-center">
             <div>
-            <button type="button" className="mode">
-              <IoMdMoon />
-            </button>
+              <button type="button" className="mode">
+                <IoMdMoon />
+              </button>
             </div>
           </div>
         </div>
