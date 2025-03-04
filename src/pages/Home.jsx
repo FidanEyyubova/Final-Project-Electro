@@ -1,15 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { FaArrowRightLong, FaCircle } from "react-icons/fa6";
-import { MdPayment } from "react-icons/md";
+import React, { useEffect } from "react";
+import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import TopPicks from "./TopPicks";
-import { IoMdReturnLeft, IoMdTime } from "react-icons/io";
-import { TbTruckDelivery } from "react-icons/tb";
 import { motion } from "framer-motion";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { IoReturnDownBack } from "react-icons/io5";
-import { RiPriceTagLine, RiSecurePaymentLine } from "react-icons/ri";
 
 const Home = () => {
   useEffect(() => {
@@ -168,6 +163,44 @@ const Home = () => {
                   </span>
                 </div>
               </motion.div>
+            </div>
+          </div>
+        </div>
+        <div className="row g-0 vr-up d-flex justify-content-center align-items-center py-5">
+          <div className="col-lg-4 col-12 vr-up-col d-flex justify-content-center align-items-center">
+          <div className="d-flex img-vertica mb-3 mt-3 justify-content-center align-items-center">
+              <div className="mx-4">
+                <p>20% discount</p>
+                <h4 className="mb-3">Smart Watch</h4>
+                <button>SHOP NOW</button>
+              </div>
+              <div>
+                <img src="../src/images/sw.png" alt="" />
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4 col-12 vr-up-col d-flex justify-content-center align-items-center">
+            <div className="d-flex img-vertica mb-3 mt-3 img-vertica-b justify-content-center align-items-center">
+              <div className="mx-4">
+                <p>20% discount</p>
+                <h4 className="mb-3">Headphone <br />and audio</h4>
+                <button>SHOP NOW</button>
+              </div>
+              <div>
+                <img src="../src/images/head.png" alt="" className="head-p" />
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4 col-12 vr-up-col d-flex justify-content-center align-items-center">
+          <div className="d-flex img-vertica mb-3 mt-3 img-vertica-c justify-content-center align-items-center">
+              <div className="mx-4">
+                <p>20% discount</p>
+                <h4 className="mb-3">Gaming mouse</h4>
+                <button>SHOP NOW</button>
+              </div>
+              <div>
+                <img src="../src/images/mouse.png" alt="" className="head-m" />
+              </div>
             </div>
           </div>
         </div>

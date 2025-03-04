@@ -14,6 +14,7 @@ const MyProvider = ({ children }) => {
   const [filteredStock, setFilteredStock] = useState("in stock");
   const [maxPrice, setMaxPrice] = useState(3000);
   const [rate, setMaxRate] = useState(5);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     axios
@@ -42,6 +43,7 @@ const MyProvider = ({ children }) => {
         setMaxPrice,
         filteredStock,
         setFilteredStock,
+        show, setShow
       }}
     >
       {children}
