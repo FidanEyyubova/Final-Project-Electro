@@ -6,7 +6,7 @@ import { Link, NavLink } from "react-router-dom";
 import { MyContext } from "../context/MyProvider";
 
 const Navbar = () => {
-  const { show, setShow } = useContext(MyContext);
+  const { show, setShow,wishlist,cart } = useContext(MyContext);
   const handleShow = () => {
     setShow(true);
   };
@@ -111,17 +111,21 @@ const Navbar = () => {
               </div>
               <div>
                 <button type="button" className="position-relative icon">
+                  <Link to={"/wishlist"}>
                   <FaRegHeart />
+                  </Link>
                   <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill">
-                    0<span className="visually-hidden">unread messages</span>
+                    {wishlist.length}
                   </span>
                 </button>
               </div>
               <div>
                 <button type="button" className="position-relative icon">
+                <Link to={"/cart"}>
                   <FiShoppingCart />
+                  </Link>
                   <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill">
-                    0<span className="visually-hidden">unread messages</span>
+                    {cart.length}
                   </span>
                 </button>
               </div>

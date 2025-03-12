@@ -15,6 +15,12 @@ const MyProvider = ({ children }) => {
   const [maxPrice, setMaxPrice] = useState(3000);
   const [rate, setMaxRate] = useState(5);
   const [show, setShow] = useState(false);
+  const [cart, setCart] = useState(() => {
+    return JSON.parse(localStorage.getItem("cart")) || [];
+  });
+  const [wishlist, setWishlist] = useState(() => {
+    return JSON.parse(localStorage.getItem("wishlist")) || [];
+  });
 
   useEffect(() => {
     axios
@@ -27,6 +33,46 @@ const MyProvider = ({ children }) => {
       .then((res) => setProduct(res.data))
       .catch((err) => console.log(err));
   }, []);
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  useEffect(() => {
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  }, [wishlist]);
+
+
+  const addToCart = (game) => {
+    if (cart.some((item) => item.id === game.id)) {
+      alert("Bu mehsul cart-da var!");
+    } else {
+      setCart([...cart, game]);
+    }
+  };
+
+  const addToWishlist = (game) => {
+    if (wishlist.some((item) => item.id === game.id)) {
+      alert("bu mehsul wishlistde var!");
+    } else {
+      setWishlist([...wishlist, game]);
+    }
+  };
+
+  const removeFromCart = (id) => {
+    setCart(cart.filter((item) => item.id !== id));
+  };
+
+  const removeFromWishlist = (id) => {
+    setWishlist(wishlist.filter((item) => item.id !== id));
+  };
+
+  const clearCart = () => {
+    setCart([]);
+  };
+
+  const clearWishlist = () => {
+    setWishlist([]);
+  };
 
   return (
     <MyContext.Provider
@@ -43,7 +89,13 @@ const MyProvider = ({ children }) => {
         setMaxPrice,
         filteredStock,
         setFilteredStock,
-        show, setShow
+        show, setShow,
+        cart, setCart,
+        wishlist, setWishlist,
+        addToCart,addToWishlist,
+        removeFromCart,removeFromWishlist,
+        clearCart,clearWishlist
+
       }}
     >
       {children}
