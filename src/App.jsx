@@ -16,6 +16,7 @@ import Wishlist from "./pages/Wishlist";
 import AddtoCart from "./pages/AddtoCart";
 import AdminDashboard from "./pages/AdminDashboard";
 import { useEffect, useState } from "react";
+import UserDashboard from "./pages/UserDashboard";
 
 function App() {
   const [userRole, setUserRole] = useState(localStorage.getItem("userRole") || "");
@@ -38,7 +39,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<ProductDetails />} />
-        <Route path="/login" element={<Login />} />
+
+        <Route path="/login" element={<Login setUserRole={setUserRole} />} />
         <Route path="/admin" element={<AdminLogin setUserRole={setUserRole} />} />
         <Route path="/signup" element={<Register />} />
         <Route path="/blog" element={<Blog />} />
@@ -48,6 +50,10 @@ function App() {
         <Route
           path="/admin-dashboard"
           element={userRole === "admin" ? <AdminDashboard setUserRole={setUserRole} /> : <Navigate to="/admin" />}
+        />
+        <Route
+          path="/user-dashboard"
+          element={userRole === "user" ? <UserDashboard UserRole={setUserRole} /> : <Navigate to="/login" />}
         />
       </Routes>
       <Footer />

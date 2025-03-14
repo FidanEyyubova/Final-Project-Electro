@@ -42,7 +42,7 @@ const Wishlist = () => {
               >
                 <div className="d-flex wishlist-detail justify-content-between px-lg-5  align-items-center mb-4">
                   <div>
-                    <img src={el.imgProduct} alt="" />
+                    <img src={el.img} alt="" />
                   </div>
                   <div>
                     <div className="d-flex justify-content-between mb-2">

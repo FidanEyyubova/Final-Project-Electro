@@ -9,6 +9,7 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 
 const Products = () => {
+  const {addToCart, addToWishlist} = useContext(MyContext)
   useEffect(() => {
     window.scrollTo(0, 0);
     Aos.init({ duration: 1000, once : true });
@@ -211,10 +212,10 @@ const handleSortChange = (e) => {
                     <div className="image  text-center py-2 pt-5">
                       <img src={el.img} />
                       <div className="d-flex justify-content-between align-items-center mx-3">
-                        <Link className="icon px-2 pb-1">
+                        <Link className="icon px-2 pb-1"onClick={() => addToWishlist(el)} >
                           <CiHeart />
                         </Link>
-                        <Link className="icon px-2 pb-1">
+                        <Link className="icon px-2 pb-1" onClick={() => addToCart(el)}>
                           <CiShoppingBasket />
                         </Link>
                       </div>
