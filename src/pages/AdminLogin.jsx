@@ -5,20 +5,19 @@ import "aos/dist/aos.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { IoIosLock } from "react-icons/io";
 import { MdAlternateEmail } from "react-icons/md";
-import supabase from "../supabase";
 
-const AdminPanel = () => {
+const AdminLogin = ({ setUserRole }) => {
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     Aos.init({ duration: 1000 });
     window.scroll(0, 70);
   }, []);
 
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -29,45 +28,42 @@ const AdminPanel = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
-
+    setError("");
     if (email === adminEmail && password === adminPassword) {
-      console.log('Admin login successful');
-      navigate('/');
+      console.log("Admin login successful");
+      localStorage.setItem("userRole", "admin");
+      navigate("/admin-dashboard");
+      setUserRole("admin");
       return;
     }
-    try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: email,
-        password: password,
-      });
-
-      if (error) {
-        setError(error.message);
-      } else {
-        alert('Signed in successfully:', data);
-        navigate('/game');
-      }
-    } catch (err) {
-      setError('An error occurred during login. Please try again.');
-      console.error(err);
-    }
+    setError("Invalid email or password.");
+    navigate("/admin");
   };
+  
 
   return (
     <div className="login-user py-5">
       <div className="container-fluid d-flex justify-content-center align-items-center">
-        <div className="row middle g-0 pt-4 d-flex justify-content-center align-items-center" data-aos="fade-right">
+        <div
+          className="row middle g-0 pt-4 d-flex justify-content-center align-items-center"
+          data-aos="fade-right"
+        >
           <div className="col-12 log-col d-flex justify-content-center align-items-center">
             <div className="d-flex flex-column justify-content-center align-items-center gap-3 pb-4">
               <div className="header">
                 <h2 className="pt-3">Admin Login</h2>
               </div>
-              <form className="d-flex flex-column gap-4 mt-3 mb-3" onSubmit={handleSubmit}>
+              <form
+                className="d-flex flex-column gap-4 mt-3 mb-3"
+                onSubmit={handleSubmit}
+              >
                 <div className="d-flex flex-column gap-2">
                   <label>Email address</label>
                   <div className="input-group flex-nowrap pass">
-                    <span className="input-group-text lock-pass" id="addon-wrapping">
+                    <span
+                      className="input-group-text lock-pass"
+                      id="addon-wrapping"
+                    >
                       <MdAlternateEmail />
                     </span>
                     <input
@@ -85,7 +81,10 @@ const AdminPanel = () => {
                     <label>Password</label>
                   </div>
                   <div className="input-group flex-nowrap pass">
-                    <span className="input-group-text lock-pass" id="addon-wrapping">
+                    <span
+                      className="input-group-text lock-pass"
+                      id="addon-wrapping"
+                    >
                       <IoIosLock />
                     </span>
                     <input
@@ -120,4 +119,4 @@ const AdminPanel = () => {
   );
 };
 
-export default AdminPanel;
+export default AdminLogin;
