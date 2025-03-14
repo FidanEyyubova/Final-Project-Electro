@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const MyContext = createContext();
 
@@ -8,6 +9,7 @@ const apikey =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhva2Jlb2ZzZ21hbGNqc3dvemd0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg0MDM5NTIsImV4cCI6MjA1Mzk3OTk1Mn0.G9mb4Ydti4GMGWId2wsVr3DBnL8dx9vyDIGATDhgST8";
 
 const MyProvider = ({ children }) => {
+  const navigate = useNavigate()
   const [product, setProduct] = useState([]);
   const [filteredCategory, setFilteredCategory] = useState("All");
   const [filteredBrand, setFilteredBrand] = useState("All");
@@ -42,21 +44,38 @@ const MyProvider = ({ children }) => {
   }, [wishlist]);
 
 
-  const addToCart = (game) => {
-    if (cart.some((item) => item.id === game.id)) {
-      alert("Bu mehsul cart-da var!");
+  const addToCart = (electro) => {
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    
+    if (!loggedInUser) {
+      alert("You need to log in first!");
+      navigate("/login");
+      return;
+    }
+  
+    if (cart.some((item) => item.id === electro.id)) {
+      alert("This product is already in the cart!");
     } else {
-      setCart([...cart, game]);
+      setCart([...cart, electro]);
     }
   };
-
-  const addToWishlist = (game) => {
-    if (wishlist.some((item) => item.id === game.id)) {
-      alert("bu mehsul wishlistde var!");
+  
+  const addToWishlist = (electro) => {
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    
+    if (!loggedInUser) {
+      alert("You need to log in first!");
+      navigate("/login");
+      return;
+    }
+  
+    if (wishlist.some((item) => item.id === electro.id)) {
+      alert("This product is already in the wishlist!");
     } else {
-      setWishlist([...wishlist, game]);
+      setWishlist([...wishlist, electro]);
     }
   };
+  
 
   const removeFromCart = (id) => {
     setCart(cart.filter((item) => item.id !== id));

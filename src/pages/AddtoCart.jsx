@@ -95,7 +95,7 @@ const AddtoCart = () => {
                 >
                   <div className="d-flex wishlist-detail gap-5 px-lg-5 align-items-center mb-4">
                     <div>
-                      <img src={el.imgProduct} alt={el.name} />
+                      <img src={el.img} alt={el.name} />
                     </div>
                     <div>
                       <div className="d-flex justify-content-between mb-2">
