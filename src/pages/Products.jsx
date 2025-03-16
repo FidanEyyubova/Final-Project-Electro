@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { MyContext } from "../context/MyProvider";
 import { GrCubes } from "react-icons/gr";
-import { GiHamburgerMenu } from "react-icons/gi";
 import { CiHeart, CiShoppingBasket } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa6";
@@ -34,7 +33,7 @@ const Products = () => {
   const [searchProducts, setSearchProducts] = useState("");
 
   useEffect(() => {
-    setSortedProducts(product); // Initialize sortedProducts when products change
+    setSortedProducts(product);
   }, [product]);
 
   const handleSortChange = (e) => {
@@ -57,7 +56,7 @@ const Products = () => {
       default:
         return;
     }
-    setSortedProducts(sorted); // Update only sortedProducts
+    setSortedProducts(sorted);
   };
 
   const categories = ["All", ...new Set(product.map((el) => el.category))];

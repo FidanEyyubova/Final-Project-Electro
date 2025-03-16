@@ -2,11 +2,12 @@ import React, { useContext, useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { FaRegHeart, FaRegUser } from "react-icons/fa6";
 import { FiShoppingCart } from "react-icons/fi";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { MyContext } from "../context/MyProvider";
 
 const Navbar = () => {
   const { show, setShow, wishlist, cart } = useContext(MyContext);
+  const navigate = useNavigate();
   const handleShow = () => {
     setShow(true);
   };
@@ -108,12 +109,15 @@ const Navbar = () => {
                 >
                   <FaRegUser />
                 </Link>
-                
               </div>
               <div className="icon">
-                <Link className="page">
+                <button
+                  className="page"
+                  onClick={() => navigate("/products")}
+                  style={{ background: "none", border: "none" }}
+                >
                   <BsSearch />
-                </Link>
+                </button>
               </div>
               <div>
                 <button type="button" className="position-relative icon">
