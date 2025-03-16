@@ -9,10 +9,10 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 
 const Products = () => {
-  const {addToCart, addToWishlist} = useContext(MyContext)
+  const { addToCart, addToWishlist } = useContext(MyContext);
   useEffect(() => {
     window.scrollTo(0, 0);
-    Aos.init({ duration: 1000, once : true });
+    Aos.init({ duration: 1000, once: true });
   }, []);
 
   const {
@@ -30,41 +30,39 @@ const Products = () => {
     setFilteredStock,
   } = useContext(MyContext);
 
-  const [openTitle, setOpenTitle] = useState(false);
-
   const [sortedProducts, setSortedProducts] = useState([]);
+  const [searchProducts, setSearchProducts] = useState("");
 
-useEffect(() => {
-  setSortedProducts(product); // Initialize sortedProducts when products change
-}, [product]);
+  useEffect(() => {
+    setSortedProducts(product); // Initialize sortedProducts when products change
+  }, [product]);
 
-const handleSortChange = (e) => {
-  const value = e.target.value;
-  let sorted = [...product];
+  const handleSortChange = (e) => {
+    const value = e.target.value;
+    let sorted = [...product];
 
-  switch (value) {
-    case "az":
-      sorted.sort((a, b) => a.name.localeCompare(b.name));
-      break;
-    case "za":
-      sorted.sort((a, b) => b.name.localeCompare(a.name));
-      break;
-    case "low-high":
-      sorted.sort((a, b) => a.price - b.price);
-      break;
-    case "high-low":
-      sorted.sort((a, b) => b.price - a.price);
-      break;
-    default:
-      return;
-  }
-  setSortedProducts(sorted); // Update only sortedProducts
-};
-
+    switch (value) {
+      case "az":
+        sorted.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case "za":
+        sorted.sort((a, b) => b.name.localeCompare(a.name));
+        break;
+      case "low-high":
+        sorted.sort((a, b) => a.price - b.price);
+        break;
+      case "high-low":
+        sorted.sort((a, b) => b.price - a.price);
+        break;
+      default:
+        return;
+    }
+    setSortedProducts(sorted); // Update only sortedProducts
+  };
 
   const categories = ["All", ...new Set(product.map((el) => el.category))];
 
-  const stocks = [...new Set(product.map((el) => el.stock))];
+  const stocks = ["All", ...new Set(product.map((el) => el.stock))];
 
   const filteredBrands =
     filteredCategory === "All"
@@ -78,18 +76,14 @@ const handleSortChange = (e) => {
           ),
         ];
 
-  const handleCategoryChange = (e) => {
-    setFilteredCategory(e.target.value);
-    setFilteredBrand("All");
-  };
-
   const filteredProducts = sortedProducts.filter(
     (el) =>
       (filteredCategory === "All" || el.category === filteredCategory) &&
       (filteredBrand === "All" || el.brand === filteredBrand) &&
-      el.stock === filteredStock &&
+      (filteredStock === "All" || el.stock === filteredStock) &&
       el.price <= maxPrice &&
-      el.rate <= rate
+      el.rate <= rate &&
+      el.name.toLowerCase().includes(searchProducts.toLowerCase())
   );
 
   console.log(filteredProducts);
@@ -107,6 +101,16 @@ const handleSortChange = (e) => {
         <div className="row middle py-4 d-flex gap-5 justify-content-center">
           <div className="col-lg-3">
             <div className="d-flex flex-column gap-4 py-3">
+            <div>
+              <h5>Search</h5>
+                <input
+                  type="text"
+                  placeholder="Search products..."
+                  className="search-input"
+                  value={searchProducts}
+                  onChange={(e) => setSearchProducts(e.target.value)}
+                />
+              </div>
               <div>
                 <h5>Categories</h5>
                 {categories.map((category) => (
@@ -176,13 +180,25 @@ const handleSortChange = (e) => {
               <h4>Best Sellers</h4>
               <div className="d-flex flex-column flex-wrap gap-2 mt-4">
                 {product.slice(0, 2).map((el) => (
-                  <div key={el.id} className="d-flex slm mb-2" style={{backgroundColor: "white", borderRadius : "10px"}}>
+                  <div
+                    key={el.id}
+                    className="d-flex slm mb-2"
+                    style={{ backgroundColor: "white", borderRadius: "10px" }}
+                  >
                     <div className="mx-3 py-3">
-                      <img src={el.img} alt="" style={{width: "60px", height : "60px"}} />
+                      <img
+                        src={el.img}
+                        alt=""
+                        style={{ width: "60px", height: "60px" }}
+                      />
                     </div>
                     <div className="mx-3 pt-3">
-                      <p><b>{el.name.slice(0,20)}...</b></p>
-                      <p style={{color: "#F13D45", fontWeight : "600"}}>{el.price}.00</p>
+                      <p>
+                        <b>{el.name.slice(0, 20)}...</b>
+                      </p>
+                      <p style={{ color: "#F13D45", fontWeight: "600" }}>
+                        {el.price}.00
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -212,10 +228,16 @@ const handleSortChange = (e) => {
                     <div className="image  text-center py-2 pt-5">
                       <img src={el.img} />
                       <div className="d-flex justify-content-between align-items-center mx-3">
-                        <Link className="icon px-2 pb-1"onClick={() => addToWishlist(el)} >
+                        <Link
+                          className="icon px-2 pb-1"
+                          onClick={() => addToWishlist(el)}
+                        >
                           <CiHeart />
                         </Link>
-                        <Link className="icon px-2 pb-1" onClick={() => addToCart(el)}>
+                        <Link
+                          className="icon px-2 pb-1"
+                          onClick={() => addToCart(el)}
+                        >
                           <CiShoppingBasket />
                         </Link>
                       </div>
@@ -251,7 +273,6 @@ const handleSortChange = (e) => {
               ))}
             </div>
           </div>
-         
         </div>
       </div>
     </div>

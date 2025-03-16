@@ -6,6 +6,7 @@ const UserDashboard = () => {
 
   const logoutLogin = () => {
     localStorage.removeItem("userRole");
+    localStorage.removeItem("loggedInUser")
     navigate("/login");
   };
 

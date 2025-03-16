@@ -6,10 +6,12 @@ import { Link, NavLink } from "react-router-dom";
 import { MyContext } from "../context/MyProvider";
 
 const Navbar = () => {
-  const { show, setShow,wishlist,cart } = useContext(MyContext);
+  const { show, setShow, wishlist, cart } = useContext(MyContext);
   const handleShow = () => {
     setShow(true);
   };
+
+  const logging = localStorage.getItem("loggedInUser");
 
   return (
     <div className="sticky-top">
@@ -100,9 +102,13 @@ const Navbar = () => {
             </ul>
             <div className="icons d-flex gap-4 px-4">
               <div className="icon">
-                <Link className="page" to={"/login"}>
+                <Link
+                  className="page"
+                  to={logging ? "/user-dashboard" : "/login"}
+                >
                   <FaRegUser />
                 </Link>
+                
               </div>
               <div className="icon">
                 <Link className="page">
@@ -112,7 +118,7 @@ const Navbar = () => {
               <div>
                 <button type="button" className="position-relative icon">
                   <Link to={"/wishlist"}>
-                  <FaRegHeart />
+                    <FaRegHeart />
                   </Link>
                   <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill">
                     {wishlist.length}
@@ -121,8 +127,8 @@ const Navbar = () => {
               </div>
               <div>
                 <button type="button" className="position-relative icon">
-                <Link to={"/cart"}>
-                  <FiShoppingCart />
+                  <Link to={"/cart"}>
+                    <FiShoppingCart />
                   </Link>
                   <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill">
                     {cart.length}

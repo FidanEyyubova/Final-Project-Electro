@@ -9,11 +9,10 @@ const apikey =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhva2Jlb2ZzZ21hbGNqc3dvemd0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg0MDM5NTIsImV4cCI6MjA1Mzk3OTk1Mn0.G9mb4Ydti4GMGWId2wsVr3DBnL8dx9vyDIGATDhgST8";
 
 const MyProvider = ({ children }) => {
-  const navigate = useNavigate()
   const [product, setProduct] = useState([]);
   const [filteredCategory, setFilteredCategory] = useState("All");
   const [filteredBrand, setFilteredBrand] = useState("All");
-  const [filteredStock, setFilteredStock] = useState("in stock");
+  const [filteredStock, setFilteredStock] = useState("All");
   const [maxPrice, setMaxPrice] = useState(3000);
   const [rate, setMaxRate] = useState(5);
   const [show, setShow] = useState(false);
@@ -23,7 +22,8 @@ const MyProvider = ({ children }) => {
   const [wishlist, setWishlist] = useState(() => {
     return JSON.parse(localStorage.getItem("wishlist")) || [];
   });
-
+  const navigate = useNavigate()
+  
   useEffect(() => {
     axios
       .get(`${base_URL}?select=*`, {
@@ -48,7 +48,6 @@ const MyProvider = ({ children }) => {
     const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
     
     if (!loggedInUser) {
-      alert("You need to log in first!");
       navigate("/login");
       return;
     }

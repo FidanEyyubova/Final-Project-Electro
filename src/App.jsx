@@ -53,7 +53,7 @@ function App() {
         />
         <Route
           path="/user-dashboard"
-          element={userRole === "user" ? <UserDashboard UserRole={setUserRole} /> : <Navigate to="/login" />}
+          element={userRole === "user" ? <UserDashboard/> : <Navigate to="/login" />}
         />
       </Routes>
       <Footer />
