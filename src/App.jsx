@@ -1,4 +1,10 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLoaderData,
+  useLocation,
+} from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
@@ -15,11 +21,14 @@ import Blog from "./pages/Blog";
 import Wishlist from "./pages/Wishlist";
 import AddtoCart from "./pages/AddtoCart";
 import AdminDashboard from "./pages/AdminDashboard";
+import NotFound from "./pages/NotFound";
 import { useEffect, useState } from "react";
 import UserDashboard from "./pages/UserDashboard";
 
 function App() {
-  const [userRole, setUserRole] = useState(localStorage.getItem("userRole") || "");
+  const [userRole, setUserRole] = useState(
+    localStorage.getItem("userRole") || ""
+  );
 
   useEffect(() => {
     const storedRole = localStorage.getItem("userRole");
@@ -28,10 +37,31 @@ function App() {
     }
   }, []);
 
+  const location = useLocation();
+  const pagePaths = [
+    "/",
+    "/about",
+    "/faq",
+    "/products",
+    "/contact",
+    "/products/:id",
+    "/login",
+    "/admin",
+    "/signup",
+    "/blog",
+    "/wishlist",
+    "/cart",
+    "/admin-dashboard",
+    "/user-dashboard",
+  ];
+
+  const isNotFoundPage = !pagePaths.includes(location.pathname);
+
   return (
     <>
-      <Header />
-      <Navbar />
+      {!isNotFoundPage && <Header />}
+      {!isNotFoundPage && <Navbar />}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -41,7 +71,10 @@ function App() {
         <Route path="/products/:id" element={<ProductDetails />} />
 
         <Route path="/login" element={<Login setUserRole={setUserRole} />} />
-        <Route path="/admin" element={<AdminLogin setUserRole={setUserRole} />} />
+        <Route
+          path="/admin"
+          element={<AdminLogin setUserRole={setUserRole} />}
+        />
         <Route path="/signup" element={<Register />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/wishlist" element={<Wishlist />} />
@@ -49,14 +82,23 @@ function App() {
 
         <Route
           path="/admin-dashboard"
-          element={userRole === "admin" ? <AdminDashboard setUserRole={setUserRole} /> : <Navigate to="/admin" />}
+          element={
+            userRole === "admin" ? (
+              <AdminDashboard setUserRole={setUserRole} />
+            ) : (
+              <Navigate to="/admin" />
+            )
+          }
         />
         <Route
           path="/user-dashboard"
-          element={userRole === "user" ? <UserDashboard/> : <Navigate to="/login" />}
+          element={
+            userRole === "user" ? <UserDashboard /> : <Navigate to="/login" />
+          }
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer />
+      {!isNotFoundPage && <Footer />}
     </>
   );
 }
