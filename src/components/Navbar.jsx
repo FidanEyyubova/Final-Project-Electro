@@ -36,11 +36,11 @@ const Navbar = () => {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="navbar-collapse collapse" id="navbarsExample05">
-            <ul className="navbar-nav mx-auto">
+            <ul className="navbar-nav mx-auto d-flex gap-4">
               <li className="nav-item">
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? " active mt-2 mx-3" : " page mt-2 mx-3"
+                    isActive ? " active" : " page"
                   }
                   to="/"
                 >
@@ -50,7 +50,7 @@ const Navbar = () => {
               <li className="nav-item">
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? " active mt-2 mx-3" : " page mt-2 mx-3"
+                    isActive ? " active" : "page"
                   }
                   to="/products"
                 >
@@ -58,18 +58,18 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <Link className=" page mt-2 mx-3">BLOG</Link>
+                <Link className=" page">BLOG</Link>
               </li>
               <li className="nav-item dropdown-center">
                 <a
-                  className=" page dropdown-toggle page mx-3"
+                  className=" page dropdown-toggle page"
                   href="#"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
                   PAGES
                 </a>
-                <ul className="dropdown-menu text-center mx-2">
+                <ul className="dropdown-menu text-center">
                   <li className="nav-item">
                     <NavLink
                       className={({ isActive }) =>
@@ -92,7 +92,7 @@ const Navbar = () => {
                   </li>
                 </ul>
               </li>
-              <li className="nav-item mx-2">
+              <li className="nav-item">
                 <NavLink
                   className={({ isActive }) => (isActive ? "active" : "page")}
                   to="/contact"
@@ -101,7 +101,7 @@ const Navbar = () => {
                 </NavLink>
               </li>
             </ul>
-            <div className="icons d-flex gap-4 px-4">
+            <div className="icons d-flex gap-4 px-lg-2">
               <div className="icon">
                 <Link
                   className="page"
@@ -121,20 +121,20 @@ const Navbar = () => {
               </div>
               <div>
                 <button type="button" className="position-relative icon">
-                  <Link to={"/wishlist"}>
+                  <Link to={"/wishlist"} className="page">
                     <FaRegHeart />
                   </Link>
-                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill">
+                  <span className="badge rounded-pill">
                     {wishlist.length}
                   </span>
                 </button>
               </div>
               <div>
                 <button type="button" className="position-relative icon">
-                  <Link to={"/cart"}>
+                  <Link to={"/cart"} className="page">
                     <FiShoppingCart />
                   </Link>
-                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill">
+                  <span className="badge rounded-pill">
                     {cart.length}
                   </span>
                 </button>

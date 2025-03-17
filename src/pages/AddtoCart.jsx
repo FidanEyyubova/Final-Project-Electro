@@ -2,8 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { MyContext } from "../context/MyProvider";
 import { GoStarFill } from "react-icons/go";
 import { IoTicketOutline } from "react-icons/io5";
-import { IoIosArrowRoundForward } from "react-icons/io";
-import { FaLongArrowAltRight } from "react-icons/fa";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { Link } from "react-router-dom";
 
@@ -15,7 +13,7 @@ const AddtoCart = () => {
   const [totalWithDiscount, setTotalWithDiscount] = useState(null);
 
   useEffect(() => {
-    const newTotal = cart.reduce((sum, item) => sum + item.price, 0);
+    const newTotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
     setTotalPrice(newTotal);
 
     if (cart.length === 0) {
@@ -37,16 +35,22 @@ const AddtoCart = () => {
       return;
     }
 
-    let discountValue = 0;
-    let newTotal = totalPrice;
+    // Check if any product has a discount
+    const hasDiscountedProduct = cart.some((item) => item.prevprice && item.prevprice > item.price);
 
     if (discount === "GAME20") {
-      discountValue = totalPrice * 0.2;
-      newTotal = totalPrice - discountValue;
+      if (hasDiscountedProduct) {
+        alert("You cannot apply GAME20 discount when a product already has a discount.");
+        return;
+      }
+
+      let discountValue = totalPrice * 0.2;
+      let newTotal = totalPrice - discountValue;
+
+      setDiscountAmount(discountValue.toFixed(2));
+      setTotalWithDiscount(newTotal.toFixed(2));
     }
 
-    setDiscountAmount(discountValue.toFixed(2));
-    setTotalWithDiscount(newTotal.toFixed(2));
     setDiscount("");
   };
 
@@ -130,7 +134,6 @@ const AddtoCart = () => {
                           onClick={() => {
                             removeFromCart(el.id);
                             if (cart.length === 0) {
-                              // Since the item is being removed, check if it's the last one.
                               setDiscountAmount(0);
                               setTotalWithDiscount(null);
                             }
@@ -149,13 +152,16 @@ const AddtoCart = () => {
             )}
           </div>
 
-          {/* Right side: Order summary (always visible) */}
           <div className="col-lg-4 d-flex justify-content-start flex-column ">
             <div className="order-summary sticky-summary pt-4 px-4">
               <h4 className="pb-3">Order Summary</h4>
               <div className="d-flex justify-content-between">
                 <p>Subtotal</p>
-                <p>${totalPrice.toFixed(2)}</p>
+                {cart.map((el) => (
+                  <p key={el.id}>
+                    ${el.price} * {el.quantity} = <b>${(el.price * el.quantity).toFixed(2)}</b>
+                  </p>
+                ))}
               </div>
 
               <div className="d-flex flex-column">
@@ -166,20 +172,14 @@ const AddtoCart = () => {
                   </div>
                 )}
 
-                {/* Final Total */}
                 <div className="d-flex justify-content-between mb-4">
-                  <h5>
-                    <b>Total</b>
-                  </h5>
-                  <h5>
-                    <b>${totalWithDiscount || totalPrice.toFixed(2)}</b>
-                  </h5>
+                  <h5><b>Total</b></h5>
+                  <h5><b>${totalWithDiscount || totalPrice.toFixed(2)}</b></h5>
                 </div>
 
-                {/* Discount Code Input */}
                 <div className="d-flex gap-2">
                   <div className="input-group mb-3">
-                    <span className="input-group-text" id="addon-wrapping">
+                    <span className="input-group-text">
                       <IoTicketOutline />
                     </span>
                     <input
@@ -189,11 +189,9 @@ const AddtoCart = () => {
                       onChange={(e) => setDiscount(e.target.value)}
                     />
                   </div>
-                  <div>
-                    <button onClick={applyDiscount} className="apply">
-                      Apply
-                    </button>
-                  </div>
+                  <button onClick={applyDiscount} className="apply">
+                    Apply
+                  </button>
                 </div>
 
                 <button disabled={cart.length === 0} className="checkout">

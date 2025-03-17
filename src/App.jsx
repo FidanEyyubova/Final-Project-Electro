@@ -24,6 +24,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
 import { useEffect, useState } from "react";
 import UserDashboard from "./pages/UserDashboard";
+import TopPicks from "./pages/TopPicks";
 
 function App() {
   const [userRole, setUserRole] = useState(
@@ -37,30 +38,30 @@ function App() {
     }
   }, []);
 
-  const location = useLocation();
-  const pagePaths = [
-    "/",
-    "/about",
-    "/faq",
-    "/products",
-    "/contact",
-    "/products/:id",
-    "/login",
-    "/admin",
-    "/signup",
-    "/blog",
-    "/wishlist",
-    "/cart",
-    "/admin-dashboard",
-    "/user-dashboard",
-  ];
+  // const location = useLocation();
+  // const pagePaths = [
+  //   "/",
+  //   "/about",
+  //   "/faq",
+  //   "/products",
+  //   "/contact",
+  //   "/products/:id",
+  //   "/login",
+  //   "/admin",
+  //   "/signup",
+  //   "/blog",
+  //   "/wishlist",
+  //   "/cart",
+  //   "/admin-dashboard",
+  //   "/user-dashboard",
+  // ];
 
-  const isNotFoundPage = !pagePaths.includes(location.pathname);
+  // const isNotFoundPage = !pagePaths.includes(location.pathname);
 
   return (
     <>
-      {!isNotFoundPage && <Header />}
-      {!isNotFoundPage && <Navbar />}
+      <Header />
+      <Navbar />
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -68,9 +69,7 @@ function App() {
         <Route path="/faq" element={<Faq />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/products/:id" element={<ProductDetails />} />
 
-        <Route path="/login" element={<Login setUserRole={setUserRole} />} />
         <Route
           path="/admin"
           element={<AdminLogin setUserRole={setUserRole} />}
@@ -97,8 +96,10 @@ function App() {
           }
         />
         <Route path="*" element={<NotFound />} />
+        <Route path="/products/:id" element={<ProductDetails />} />
+        <Route path="/login" element={<Login setUserRole={setUserRole} />} />
       </Routes>
-      {!isNotFoundPage && <Footer />}
+      <Footer />
     </>
   );
 }

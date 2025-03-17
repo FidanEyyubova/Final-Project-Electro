@@ -2,38 +2,70 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
-const Login = ({setUserRole}) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const Login = ({ setUserRole }) => {
   const [error, setError] = useState("");
+  const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
 
   useEffect(() => {
     Aos.init({ duration: 1000 });
     window.scroll(0, 80);
   }, []);
 
+  const showPassword = () => {
+    setShowPass((prev) => !prev);
+  };
+
+  const handleChange = (event) => {
+    setUser((prevData) => ({
+      ...prevData,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+    if (!user.email || !user.password) {
+      setError("All fields must be filled.");
+      return;
+    }
+
+    if (!emailRegex.test(user.email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
+    if (!passwordRegex.test(user.password)) {
+      setError(
+        "Password must be at least 8 characters, including letters and numbers."
+      );
+      return;
+    }
+
     const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
-    const user = storedUsers.find(
-      (u) => u.email === email && u.password === password
+    const foundUser = storedUsers.find(
+      (u) => u.email === user.email && u.password === user.password
     );
-  
-    if (user) {
-      localStorage.setItem("loggedInUser", JSON.stringify(user));
+
+    if (foundUser) {
+      localStorage.setItem("loggedInUser", JSON.stringify(foundUser));
       alert("Login successful!");
       navigate("/user-dashboard");
-      setUserRole("user")
+      setUserRole("user");
       localStorage.setItem("userRole", "user");
-      return;
     } else {
       setError("Invalid email or password.");
-      navigate("/login");
     }
   };
-  
 
   return (
     <div className="login">
@@ -51,30 +83,58 @@ const Login = ({setUserRole}) => {
               <div className="header">
                 <h2 className="pt-3">Login account</h2>
               </div>
-              <form onSubmit={handleSubmit} className="d-flex flex-column gap-4 mt-3 mb-3">
+              <form
+                onSubmit={handleSubmit}
+                className="d-flex flex-column gap-4 mt-3 mb-3"
+              >
                 <div className="d-flex flex-column in gap-2">
                   <label>Email address</label>
                   <input
                     type="email"
                     placeholder="Your email address"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={user.email}
+                    onChange={handleChange}
+                    name="email"
+                    className="first-input"
                   />
                 </div>
                 <div className="d-flex flex-column gap-2">
                   <label>Password</label>
-                  <input
-                    type="password"
-                    placeholder="Your password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
+                  <div className="input-group flex-nowrap pass">
+                    <input
+                      type={showPass ? "text" : "password"}
+                      placeholder="Your password"
+                      value={user.password}
+                      onChange={handleChange}
+                      name="password"
+                      className="pass lock-pass"
+                    />
+                    <span
+                      className="input-group-text lock-pass"
+                      id="addon-wrapping"
+                      onClick={showPassword}
+                    >
+                      {showPass ? <FaEye /> : <FaEyeSlash />}
+                    </span>
+                  </div>
                 </div>
-                <p className="text-center" style={{ color: "red", fontWeight: "bold" }}>{error}</p>
-                <button type="submit" className="mb-3 button-log-reg">Login</button>
+                <div className="text-center">
+                  <p
+                    className="text-center"
+                    style={{ color: "red", fontWeight: "bold" }}
+                  >
+                    {error}
+                  </p>
+                  <button type="submit" className="mb-1 button-log-reg">
+                    Login
+                  </button>
+                </div>
               </form>
               <p className="text-center">
-                Do not have an account? <Link to="/signup" className="sign-link">Sign up</Link>
+                Do not have an account?{" "}
+                <Link to="/signup" className="sign-link">
+                  Sign up
+                </Link>
               </p>
             </div>
           </div>
