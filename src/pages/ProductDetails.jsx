@@ -10,7 +10,7 @@ import { h3 } from "framer-motion/client";
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const { product } = useContext(MyContext);
+  const { product,addToCart } = useContext(MyContext);
   const productDetail = product?.find((item) => item.id === Number(id));
 
   const [quantity, setQuantity] = useState(1);
@@ -18,6 +18,13 @@ const ProductDetails = () => {
   const increaseQuantity = () => setQuantity((prev) => prev + 1);
   const decreaseQuantity = () =>
     setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+
+  const handleAddToCart = () => {
+    if (productDetail) {
+      addToCart({ ...productDetail, quantity });
+    }
+  };
+
 
   const [open, setOpen] = useState(false);
 
@@ -29,6 +36,8 @@ const ProductDetails = () => {
     setOpen(false);
   };
 
+
+  
   return (
     <div className="product-detail py-5">
       <div className="container">
@@ -78,10 +87,6 @@ const ProductDetails = () => {
                     )}
                   <h2 className="mx-2">${productDetail.price}.00</h2>
                 </div>
-                <div className="d-flex gap-2 py-2">
-                  <div className="circle mt-1"></div>
-                  <h6>{productDetail.stock}</h6>
-                </div>
                 <div className="d-flex align-items-center mt-3">
                   <div className="quan py-2 px-2">
                     <button className="inc" onClick={decreaseQuantity}>
@@ -95,8 +100,11 @@ const ProductDetails = () => {
                 </div>
                 <div className="d-flex gap-3 py-3 flex-column">
                   <button className="add buy">BUY NOW</button>
-                  <button className="add cart">ADD TO CARD</button>
-                  <button className="add cart">ADD TO WISHLIST</button>
+                  <button className="add cart" onClick={handleAddToCart}
+                  >ADD TO CART</button>
+                  <button className="add cart"
+                  
+                  >ADD TO WISHLIST</button>
                 </div>
               </>
             )}

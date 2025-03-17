@@ -48,7 +48,8 @@ const MyProvider = ({ children }) => {
     const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
     
     if (!loggedInUser) {
-      navigate("/login");
+      alert("You need to log in first!");
+      window.location.href = "/login"
       return;
     }
   
@@ -64,7 +65,7 @@ const MyProvider = ({ children }) => {
     
     if (!loggedInUser) {
       alert("You need to log in first!");
-      navigate("/login");
+      window.location.href = "/login"
       return;
     }
   

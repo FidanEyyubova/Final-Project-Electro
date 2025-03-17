@@ -32,13 +32,13 @@ const Faq = () => {
               <div>
                 <h5>ASK US ANYTHING</h5>
 
-                <div className="d-flex gap-2 pt-3">
+                <div className="d-flex gap-2 pt-3 comple">
                   <p className="icon">
                     <MdLocalPhone />
                   </p>
                   <p>+00-1234567890</p>
                 </div>
-                <div className="d-flex gap-2">
+                <div className="d-flex gap-2 comple">
                   <p className="icon">
                     <FaRegEnvelope />
                   </p>

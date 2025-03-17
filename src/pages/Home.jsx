@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TopPicks from "./TopPicks";
 import { motion } from "framer-motion";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
 const Home = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     Aos.init({ duration: 1000 });
     window.scroll(0, 0);
@@ -34,7 +35,7 @@ const Home = () => {
                     <h1 className="pb-5 pt-1">
                       Headphone on <br /> world off
                     </h1>
-                    <Link className="shop p-3">
+                    <Link className="shop p-3" to={"/products"}>
                       SHOP NOW <FaArrowRightLong className="mb-1" />
                     </Link>
                   </div>
@@ -78,7 +79,11 @@ const Home = () => {
                     <p className="mt-3">Smart Watch</p>
                     <div>
                       <p className="mt-3 item">6 items</p>
-                      <button className="mt-3 py-2 px-1">Shop now</button>
+                      <button className="mt-3 py-2 px-1">
+                        <Link to={"/products"} className="shop-link">
+                          Shop now
+                        </Link>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -97,7 +102,11 @@ const Home = () => {
                     <p className="mt-3">Headphones</p>
                     <div>
                       <p className="mt-3 item">6 items</p>
-                      <button className="mt-3 py-2 px-1">Shop now</button>
+                      <button className="mt-3 py-2 px-1">
+                        <Link to={"/products"} className="shop-link">
+                          Shop now
+                        </Link>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -116,7 +125,11 @@ const Home = () => {
                     <p className="mt-3">Camera</p>
                     <div>
                       <p className="mt-3 item">6 items</p>
-                      <button className="mt-3 py-2 px-1">Shop now</button>
+                      <button className="mt-3 py-2 px-1">
+                        <Link to={"/products"} className="shop-link">
+                          Shop now
+                        </Link>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -135,7 +148,11 @@ const Home = () => {
                     <p className="mt-3">Mouse</p>
                     <div>
                       <p className="mt-3 item">6 items</p>
-                      <button className="mt-3 py-2 px-1">Shop now</button>
+                      <button className="mt-3 py-2 px-1">
+                        <Link to={"/products"} className="shop-link">
+                          Shop now
+                        </Link>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -168,11 +185,11 @@ const Home = () => {
         </div>
         <div className="row g-0 vr-up d-flex justify-content-center align-items-center py-5">
           <div className="col-lg-4 col-12 vr-up-col d-flex justify-content-center align-items-center">
-          <div className="d-flex img-vertica mb-3 mt-3 justify-content-center align-items-center">
+            <div className="d-flex img-vertica mb-3 mt-3 justify-content-center align-items-center">
               <div className="mx-4">
                 <p>20% discount</p>
                 <h4 className="mb-3">Smart Watch</h4>
-                <button>SHOP NOW</button>
+                <button onClick={() => navigate("/products")}>SHOP NOW</button>
               </div>
               <div>
                 <img src="../src/images/sw.png" alt="" />
@@ -183,8 +200,11 @@ const Home = () => {
             <div className="d-flex img-vertica mb-3 mt-3 img-vertica-b justify-content-center align-items-center">
               <div className="mx-4">
                 <p>20% discount</p>
-                <h4 className="mb-3">Headphone <br />and audio</h4>
-                <button>SHOP NOW</button>
+                <h4 className="mb-3">
+                  Headphone <br />
+                  and audio
+                </h4>
+                <button onClick={() => navigate("/products")}>SHOP NOW</button>
               </div>
               <div>
                 <img src="../src/images/head.png" alt="" className="head-p" />
@@ -192,11 +212,11 @@ const Home = () => {
             </div>
           </div>
           <div className="col-lg-4 col-12 vr-up-col d-flex justify-content-center align-items-center">
-          <div className="d-flex img-vertica mb-3 mt-3 img-vertica-c justify-content-center align-items-center">
+            <div className="d-flex img-vertica mb-3 mt-3 img-vertica-c justify-content-center align-items-center">
               <div className="mx-4">
                 <p>20% discount</p>
                 <h4 className="mb-3">Gaming mouse</h4>
-                <button>SHOP NOW</button>
+                <button onClick={() => navigate("/products")}>SHOP NOW</button>
               </div>
               <div>
                 <img src="../src/images/mouse.png" alt="" className="head-m" />

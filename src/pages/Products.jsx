@@ -2,17 +2,27 @@ import { useContext, useEffect, useState } from "react";
 import { MyContext } from "../context/MyProvider";
 import { GrCubes } from "react-icons/gr";
 import { CiHeart, CiShoppingBasket } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaStar } from "react-icons/fa6";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
 const Products = () => {
   const { addToCart, addToWishlist } = useContext(MyContext);
+  const navigate = useNavigate()
   useEffect(() => {
     window.scrollTo(0, 0);
     Aos.init({ duration: 1000, once: true });
   }, []);
+  const handleClick = (el) => {
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!loggedInUser) {
+      alert("You need to log in first!");
+      window.location.href = "/login"
+      return;
+    } 
+    window.location.href = `/products/${el.id}`;
+  };
 
   const {
     product,
@@ -35,6 +45,8 @@ const Products = () => {
   useEffect(() => {
     setSortedProducts(product);
   }, [product]);
+
+  
 
   const handleSortChange = (e) => {
     const value = e.target.value;
@@ -61,7 +73,6 @@ const Products = () => {
 
   const categories = ["All", ...new Set(product.map((el) => el.category))];
 
-  const stocks = ["All", ...new Set(product.map((el) => el.stock))];
 
   const filteredBrands =
     filteredCategory === "All"
@@ -79,7 +90,6 @@ const Products = () => {
     (el) =>
       (filteredCategory === "All" || el.category === filteredCategory) &&
       (filteredBrand === "All" || el.brand === filteredBrand) &&
-      (filteredStock === "All" || el.stock === filteredStock) &&
       el.price <= maxPrice &&
       el.rate <= rate &&
       el.name.toLowerCase().includes(searchProducts.toLowerCase())
@@ -125,24 +135,6 @@ const Products = () => {
                     <label>{category}</label>
                   </div>
                 ))}
-              </div>
-              <div>
-                <h4>Stock</h4>
-                <div>
-                  {stocks.map((stock) => (
-                    <div key={stock} className="py-2">
-                      <input
-                        type="checkbox"
-                        name="stock"
-                        className="mx-2"
-                        value={stock}
-                        checked={filteredStock === stock}
-                        onChange={(e) => setFilteredStock(e.target.value)}
-                      />
-                      <label>{stock}</label>
-                    </div>
-                  ))}
-                </div>
               </div>
               <div>
                 <h4>Brand</h4>
@@ -235,7 +227,7 @@ const Products = () => {
                         </Link>
                         <Link
                           className="icon px-2 pb-1"
-                          onClick={() => addToCart(el)}
+                          onClick={() =>handleClick(el)}
                         >
                           <CiShoppingBasket />
                         </Link>
@@ -244,12 +236,12 @@ const Products = () => {
                     <div className="d-flex flex-column justify-content-center align-items-center py-2">
                       <div className="py-2">
                         <h5>
-                          <Link to={`/products/${el.id}`}>{el.name}</Link>
+                          <Link to={`/products/${el.id}`}  className="name">{el.name}</Link>
                         </h5>
                       </div>
                       <div className="d-flex gap-2">
                         {el.prevprice !== null && el.prevprice !== "" && (
-                          <p className="prev">${el.prevprice}.00</p>
+                          <p className="prev"><del>${el.prevprice}.00</del></p>
                         )}
                         <p className="price">${el.price}.00</p>
                       </div>
