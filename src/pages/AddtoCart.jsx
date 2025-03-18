@@ -3,7 +3,7 @@ import { MyContext } from "../context/MyProvider";
 import { GoStarFill } from "react-icons/go";
 import { IoTicketOutline } from "react-icons/io5";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const AddtoCart = () => {
   const { cart, clearCart, removeFromCart, addToCart } = useContext(MyContext);
@@ -11,9 +11,13 @@ const AddtoCart = () => {
   const [discount, setDiscount] = useState("");
   const [discountAmount, setDiscountAmount] = useState(0);
   const [totalWithDiscount, setTotalWithDiscount] = useState(null);
+  const navigate = useNavigate()
 
   useEffect(() => {
-    const newTotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const newTotal = cart.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    );
     setTotalPrice(newTotal);
 
     if (cart.length === 0) {
@@ -35,12 +39,15 @@ const AddtoCart = () => {
       return;
     }
 
-    // Check if any product has a discount
-    const hasDiscountedProduct = cart.some((item) => item.prevprice && item.prevprice > item.price);
+    const hasDiscountedProduct = cart.some(
+      (item) => item.prevprice && item.prevprice > item.price
+    );
 
-    if (discount === "GAME20") {
+    if (discount === "electro20") {
       if (hasDiscountedProduct) {
-        alert("You cannot apply GAME20 discount when a product already has a discount.");
+        alert(
+          "You cannot apply GAME20 discount when a product already has a discount."
+        );
         return;
       }
 
@@ -55,7 +62,7 @@ const AddtoCart = () => {
   };
 
   return (
-    <div className="wishlist py-4">
+    <div className="wishlist  py-4">
       <div className="container-fluid">
         <div className="wishlist-header">
           <div className="d-flex justify-content-between align-items-center px-5 py-4">
@@ -82,7 +89,7 @@ const AddtoCart = () => {
             {cart.length === 0 ? (
               <div className="d-flex flex-column justify-content-center align-items-center gap-3">
                 <h4 className="text-center text-muted text">
-                  Your cart is empty! <br /> Add your favorite games now and
+                  Your cart is empty! <br /> Add your favorite products now and
                   never <br /> miss a great deal!
                 </h4>
                 <button className="shop-b mb-4">
@@ -97,28 +104,25 @@ const AddtoCart = () => {
                   key={el.id}
                   className="col-md-10 col-sm-12 d-flex flex-column justify-content-center align-items-center"
                 >
-                  <div className="d-flex wishlist-detail gap-5 px-lg-5 align-items-center mb-4">
+                  <div className="d-flex wishlist-detail px-3 gap-3 align-items-center mb-4 wishlist-cart">
                     <div>
                       <img src={el.img} alt={el.name} />
                     </div>
                     <div>
-                      <div className="d-flex justify-content-between mb-2">
-                        <h3>{el.name}</h3>
-                        <p className="star-p mt-lg-1">
-                          <GoStarFill className="star mb-lg-1" /> {el.rate}
-                        </p>
-                      </div>
-                      <div>
-                        <p className="genre">Genres</p>
-                      </div>
-                      <div className="d-flex flex-wrap mb-2">
-                        {el.genres?.map((genre, index) => (
-                          <p key={index} className="prop text-center mx-1 py-1">
-                            {genre}
+                      <div className="d-flex justify-content-between">
+                      <h5 className="name" onClick={() => navigate(`/products/${el.id}`)}>{el.name}</h5>
+                        <div className="d-flex gap-1 pb-2">
+                          <p>
+                            <GoStarFill className="star" />
                           </p>
-                        ))}
+                          <p> {el.rate}</p>
+                        </div>
                       </div>
-                      <div>
+
+                      <div className="d-flex flex-wrap">
+                        <p>{el.desc[1].slice(0, 100)}...</p>
+                      </div>
+                      <div className="d-flex gap-1">
                         {el.prevprice && (
                           <p className="prev">
                             <del>${el.prevprice}</del>
@@ -128,7 +132,7 @@ const AddtoCart = () => {
                           <b>${el.price}</b>
                         </h5>
                       </div>
-                      <div className="d-flex justify-content-end mt-3">
+                      <div className="d-flex justify-content-end px-3">
                         <button
                           className="remove"
                           onClick={() => {
@@ -141,9 +145,6 @@ const AddtoCart = () => {
                         >
                           Remove
                         </button>
-                        <button className="add" onClick={() => addToCart(el)}>
-                          Add to Cart
-                        </button>
                       </div>
                     </div>
                   </div>
@@ -152,16 +153,13 @@ const AddtoCart = () => {
             )}
           </div>
 
-          <div className="col-lg-4 d-flex justify-content-start flex-column ">
+          <div className="col-lg-4 d-flex justify-content-start flex-column order">
             <div className="order-summary sticky-summary pt-4 px-4">
               <h4 className="pb-3">Order Summary</h4>
               <div className="d-flex justify-content-between">
                 <p>Subtotal</p>
-                {cart.map((el) => (
-                  <p key={el.id}>
-                    ${el.price} * {el.quantity} = <b>${(el.price * el.quantity).toFixed(2)}</b>
-                  </p>
-                ))}
+                <p>{totalPrice.toFixed(2)}</p>
+                
               </div>
 
               <div className="d-flex flex-column">
@@ -173,8 +171,12 @@ const AddtoCart = () => {
                 )}
 
                 <div className="d-flex justify-content-between mb-4">
-                  <h5><b>Total</b></h5>
-                  <h5><b>${totalWithDiscount || totalPrice.toFixed(2)}</b></h5>
+                  <h5>
+                    <b>Total</b>
+                  </h5>
+                  <h5>
+                    <b>${totalWithDiscount || totalPrice.toFixed(2)}</b>
+                  </h5>
                 </div>
 
                 <div className="d-flex gap-2">

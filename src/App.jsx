@@ -1,4 +1,5 @@
 import {
+  matchPath,
   Navigate,
   Route,
   Routes,
@@ -38,30 +39,35 @@ function App() {
     }
   }, []);
 
-  // const location = useLocation();
-  // const pagePaths = [
-  //   "/",
-  //   "/about",
-  //   "/faq",
-  //   "/products",
-  //   "/contact",
-  //   "/products/:id",
-  //   "/login",
-  //   "/admin",
-  //   "/signup",
-  //   "/blog",
-  //   "/wishlist",
-  //   "/cart",
-  //   "/admin-dashboard",
-  //   "/user-dashboard",
-  // ];
+  const location = useLocation();
+  const pagePaths = [
+    "/",
+    "/about",
+    "/faq",
+    "/products",
+    "/contact",
+    "/products/:id",
+    "/login",
+    "/admin",
+    "/signup",
+    "/blog",
+    "/wishlist",
+    "/cart",
+    "/admin-dashboard",
+    "/user-dashboard",
+  ];
 
-  // const isNotFoundPage = !pagePaths.includes(location.pathname);
+  const dynamicRoutes = ["/products/:id"];
+
+  const isNotFoundPage =
+    !pagePaths.includes(location.pathname) &&
+    !dynamicRoutes.some((route) => matchPath(route, location.pathname));
 
   return (
     <>
-      <Header />
-      <Navbar />
+    {!isNotFoundPage && <Header /> }
+    {!isNotFoundPage && <Navbar />}
+      
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -99,7 +105,8 @@ function App() {
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="/login" element={<Login setUserRole={setUserRole} />} />
       </Routes>
-      <Footer />
+      {!isNotFoundPage && <Footer />}
+      
     </>
   );
 }
