@@ -6,11 +6,8 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { MyContext } from "../context/MyProvider";
 
 const Navbar = () => {
-  const { show, setShow, wishlist, cart } = useContext(MyContext);
+  const { wishlist, cart } = useContext(MyContext);
   const navigate = useNavigate();
-  const handleShow = () => {
-    setShow(true);
-  };
 
   const logging = localStorage.getItem("loggedInUser");
 

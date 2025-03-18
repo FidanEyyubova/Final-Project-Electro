@@ -1,9 +1,6 @@
 import React from "react";
-import { BiSupport } from "react-icons/bi";
-import { FaEnvelope, FaPhoneAlt, FaPhoneVolume } from "react-icons/fa";
-import { GiConvergenceTarget } from "react-icons/gi";
+import { FaEnvelope, FaPhoneAlt} from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
-import { TbTargetArrow } from "react-icons/tb";
 
 const Contact = () => {
   return (

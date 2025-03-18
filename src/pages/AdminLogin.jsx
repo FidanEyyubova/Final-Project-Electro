@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { IoIosLock } from "react-icons/io";
-import { MdAlternateEmail } from "react-icons/md";
+
 
 const AdminLogin = ({ setUserRole }) => {
   const navigate = useNavigate();
@@ -14,14 +12,10 @@ const AdminLogin = ({ setUserRole }) => {
     window.scroll(0, 70);
   }, []);
 
-  const [passwordVisible, setPasswordVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
-  };
 
   const adminEmail = "adminelectro@gmail.com";
   const adminPassword = "electro0504";

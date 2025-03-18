@@ -49,7 +49,7 @@ const MyProvider = ({ children }) => {
     
     if (!loggedInUser) {
       alert("You need to log in first!");
-      window.location.href = "/login"
+      window.location.href = "/login";
       return;
     }
   

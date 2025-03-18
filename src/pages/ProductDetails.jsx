@@ -1,12 +1,10 @@
 import React, { useContext, useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { MyContext } from "../context/MyProvider";
 import ReactImageMagnify from "react-image-magnify";
-import { FaCircle, FaMinus, FaPlus, FaStar } from "react-icons/fa6";
-import { GoPlus } from "react-icons/go";
+import { FaStar } from "react-icons/fa6";
 import { HiMinus } from "react-icons/hi";
 import { FiPlus } from "react-icons/fi";
-import { h3 } from "framer-motion/client";
 
 const ProductDetails = () => {
   const { id } = useParams();
