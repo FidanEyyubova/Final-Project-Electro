@@ -23,8 +23,8 @@ const AdminLogin = ({ setUserRole }) => {
     setPasswordVisible(!passwordVisible);
   };
 
-  const adminEmail = "gameverse@gmail.com";
-  const adminPassword = "fidan2004";
+  const adminEmail = "adminelectro@gmail.com";
+  const adminPassword = "electro0504";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +42,7 @@ const AdminLogin = ({ setUserRole }) => {
   
 
   return (
-    <div className="login-user py-5">
+    <div className="login-user admin py-5">
       <div className="container-fluid d-flex justify-content-center align-items-center">
         <div
           className="row middle g-0 pt-4 d-flex justify-content-center align-items-center"
@@ -60,12 +60,7 @@ const AdminLogin = ({ setUserRole }) => {
                 <div className="d-flex flex-column gap-2">
                   <label>Email address</label>
                   <div className="input-group flex-nowrap pass">
-                    <span
-                      className="input-group-text lock-pass"
-                      id="addon-wrapping"
-                    >
-                      <MdAlternateEmail />
-                    </span>
+                
                     <input
                       type="email"
                       placeholder="Your email"
@@ -81,32 +76,21 @@ const AdminLogin = ({ setUserRole }) => {
                     <label>Password</label>
                   </div>
                   <div className="input-group flex-nowrap pass">
-                    <span
-                      className="input-group-text lock-pass"
-                      id="addon-wrapping"
-                    >
-                      <IoIosLock />
-                    </span>
+                  
                     <input
-                      type={passwordVisible ? "text" : "password"}
+                      type="password"
                       placeholder="Your password"
                       name="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       className="pass"
                     />
-                    <span
-                      className="input-group-text lock-pass right"
-                      id="addon-wrapping"
-                      onClick={togglePasswordVisibility}
-                    >
-                      {passwordVisible ? <FaEye /> : <FaEyeSlash />}
-                    </span>
+                   
                   </div>
                 </div>
                 {error && <div className="alert alert-danger">{error}</div>}
                 <div className="text-center">
-                  <button type="submit" className="mb-3 mt-2 button-log-reg">
+                  <button type="submit" className="mb-3 mt-3 button-log-reg">
                     Login
                   </button>
                 </div>
