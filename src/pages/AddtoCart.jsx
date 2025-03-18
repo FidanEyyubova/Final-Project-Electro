@@ -46,7 +46,7 @@ const AddtoCart = () => {
     if (discount === "electro20") {
       if (hasDiscountedProduct) {
         alert(
-          "You cannot apply GAME20 discount when a product already has a discount."
+          "You cannot apply electro20 discount when a product already has a discount."
         );
         return;
       }

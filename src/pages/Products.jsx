@@ -8,12 +8,13 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 
 const Products = () => {
-  const { addToCart, addToWishlist } = useContext(MyContext);
-  const navigate = useNavigate()
+  const {addToWishlist } = useContext(MyContext);
+
   useEffect(() => {
     window.scrollTo(0, 0);
     Aos.init({ duration: 1000, once: true });
   }, []);
+
   const handleClick = (el) => {
     const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
     if (!loggedInUser) {
@@ -26,17 +27,13 @@ const Products = () => {
 
   const {
     product,
-    setProduct,
     filteredCategory,
     filteredBrand,
     maxPrice,
     rate,
     setFilteredCategory,
     setFilteredBrand,
-    setMaxRate,
     setMaxPrice,
-    filteredStock,
-    setFilteredStock,
   } = useContext(MyContext);
 
   const [sortedProducts, setSortedProducts] = useState([]);
@@ -45,8 +42,6 @@ const Products = () => {
   useEffect(() => {
     setSortedProducts(product);
   }, [product]);
-
-  
 
   const handleSortChange = (e) => {
     const value = e.target.value;
